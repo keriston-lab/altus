@@ -18,9 +18,8 @@
         rel="stylesheet">
 
     <style>
-        /* Fundações, Reset e Mecânica de Rolagem Suavizada (Estilo Hub Proximity) */
+        /* Fundações e Reset - Tiramos o scroll-snap global daqui */
         html {
-            scroll-snap-type: y proximity;
             scroll-behavior: smooth;
         }
 
@@ -111,7 +110,7 @@
             color: #00c6ff;
         }
 
-        /* Configuração de Alinhamento Amortecido de Seção - Sem Vazio Excessivo */
+        /* Configuração de Seções Gerais - Correção do título oculto atrás do menu */
         section {
             padding: 45px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
@@ -119,6 +118,12 @@
             display: flex;
             align-items: center;
             width: 100%;
+            scroll-margin-top: 90px;
+            /* Alinha a seção perfeitamente abaixo da barra superior */
+        }
+
+        /* Container de Snapping focado unicamente entre a Equipe e Depoimentos */
+        .snap-section-target {
             scroll-snap-align: start;
         }
 
@@ -136,34 +141,32 @@
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* 2. Hero Section: Moldura Arredondada com Parallax e Glassmorphism */
+        /* 2. Hero Section: Aumento drástico da horizontalidade lateral */
         .hero-wrapper {
             padding: 40px 24px 20px 24px;
             width: 100%;
-            max-width: 1150px;
+            max-width: 1350px;
+            /* Expandido de 1150px para 1350px para maior ganho lateral */
             margin: 0 auto;
-            scroll-snap-align: start;
         }
 
         .hero {
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 24px;
-            /* Moldura de cantos arredondados */
             background-attachment: fixed;
-            /* Parallax Estático */
             background-position: center;
             background-size: cover;
             position: relative;
             overflow: hidden;
             background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.75), rgba(13, 14, 18, 0.7)), url('links/logosemfundo.png');
-            padding: 90px 24px;
+            padding: 100px 40px;
+            /* Expandido para espalhar mais os elementos */
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
         }
 
-        /* Camada de animação de luz contínua de fundo */
         .hero-animation-overlay {
             position: absolute;
             top: 0;
@@ -187,19 +190,20 @@
             }
         }
 
-        /* Caixa Estilo Vidro Fosco (Glassmorphism para Embaçar o Fundo) */
+        /* Glassmorphism Card com mais espaço horizontal para as bordas */
         .glass-card {
             position: relative;
             z-index: 2;
             background: rgba(13, 14, 18, 0.45);
-            /* Fundo semi-transparente sutil */
             backdrop-filter: blur(16px);
-            /* Embaça o fundo perfeitamente */
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 50px 40px;
-            max-width: 800px;
+            padding: 55px 60px;
+            /* Expandido o preenchimento lateral interno */
+            width: 100%;
+            max-width: 1000px;
+            /* Aumentado limite da caixa de texto interna */
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             text-align: center;
@@ -211,7 +215,7 @@
             line-height: 1.2;
             letter-spacing: -1px;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, #fff 60%, #00c6ff);
+            background: linear-gradient(135deg, #fff 65%, #00c6ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -297,7 +301,13 @@
             font-size: 0.95rem;
         }
 
-        /* 4. Seção Equipe */
+        /* 4. Seção Equipe e Ativação Exclusiva de Snap Container */
+        .snap-container-wrapper {
+            scroll-snap-type: y proximity;
+            /* O ímã age somente neste bloco integrado */
+            width: 100%;
+        }
+
         .grid-equipe {
             display: flex;
             justify-content: center;
@@ -487,7 +497,7 @@
             color: #fff;
         }
 
-        /* 8. Botões Globais Fixos Flutuantes (Sobrepostos no Canto Direito) */
+        /* 8. Botões Globais Fixos Flutuantes */
         .floating-actions-container {
             position: fixed;
             bottom: 25px;
@@ -540,14 +550,13 @@
             border-color: #00c6ff;
         }
 
-        /* Rodapé com Alinhamento Cirúrgico */
+        /* Rodapé Centralizado Simétrico */
         footer {
             padding: 40px 0;
             background: #020304;
             border-top: 1px solid rgba(255, 255, 255, 0.01);
             font-size: 0.8rem;
             color: #4b5563;
-            scroll-snap-align: end;
         }
 
         .footer-grid {
@@ -581,10 +590,6 @@
         }
 
         @media (max-width: 768px) {
-            html {
-                scroll-snap-type: none;
-            }
-
             header .container {
                 flex-direction: column;
                 gap: 15px;
@@ -595,7 +600,7 @@
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .hero-wrapper {
@@ -613,6 +618,11 @@
 
             section {
                 padding: 45px 0;
+                scroll-margin-top: 130px;
+            }
+
+            .snap-container-wrapper {
+                scroll-snap-type: none;
             }
         }
     </style>
@@ -652,11 +662,11 @@
         </div>
     </header>
 
-    <!-- 2. MOLDURA MESTRA DA HERO (MOLDURA + PARALLAX + GLASSMORPHISM) -->
+    <!-- 2. MOLDURA MESTRA DA HERO (HORIZONTALIDADE EXPANDIDA LATERALMENTE) -->
     <div class="hero-wrapper">
         <section class="hero">
             <div class="hero-animation-overlay"></div>
-            <!-- Caixa de Vidro Fosco que embaça o fundo estático -->
+            <!-- Caixa de Vidro Fosco Ampla -->
             <div class="glass-card">
                 <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
                 <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
@@ -693,48 +703,54 @@
         </div>
     </section>
 
-    <!-- 4. EQUIPE E COLABORADORES -->
-    <section id="equipe">
-        <div class="container">
-            <h2 class="section-title">Quem Executa a sua <span>Estratégia</span></h2>
-            <div class="grid-equipe">
-                <div class="membro-card">
-                    <div class="foto-wrapper">
-                        <img src="links/logo.png" alt="Keriston Marcelo">
-                    </div>
-                    <h3>Keriston Marcelo</h3>
-                    <p>Estrategista de Performance Web</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- CONTAINER INTEGRADO PARA O EMBUTIMENTO DO SCROLL AUTOMÁTICO EXCLUSIVO -->
+    <div class="snap-container-wrapper">
 
-    <!-- 5. DEPOIMENTOS -->
-    <section id="depoimentos">
-        <div class="container">
-            <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
-            <div class="grid-depoimentos">
-                <div class="depoimento-card">
-                    <div class="estrelas">★★★★★</div>
-                    <p>"A velocidade com que a página abre no celular é impressionante. Meus clientes elogiaram a
-                        organização dos botões e o contato ficou muito mais ágil."</p>
-                    <div class="autor-info">
-                        <h4>Mário Silva</h4>
-                        <span>Comércio Local</span>
-                    </div>
-                </div>
-                <div class="depoimento-card">
-                    <div class="estrelas">★★★★★</div>
-                    <p>"Paramos de pagar taxas abusivas para agências tradicionais de desenvolvimento. A Altus entregou
-                        a plataforma perfeita e o atendimento foi exemplar."</p>
-                    <div class="autor-info">
-                        <h4>Ana Júlia</h4>
-                        <span>Profissional Liberal</span>
+        <!-- 4. EQUIPE E COLABORADORES (QUEM EXECUTA A SUA ESTRATÉGIA) -->
+        <section id="equipe" class="snap-section-target">
+            <div class="container">
+                <h2 class="section-title">Quem Executa a sua <span>Estratégia</span></h2>
+                <div class="grid-equipe">
+                    <div class="membro-card">
+                        <div class="foto-wrapper">
+                            <img src="links/logo.png" alt="Keriston Marcelo">
+                        </div>
+                        <h3>Keriston Marcelo</h3>
+                        <p>Estrategista de Performance Web</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- 5. DEPOIMENTOS (O QUE DIZEM NOSSOS PARCEIROS) -->
+        <section id="depoimentos" class="snap-section-target">
+            <div class="container">
+                <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
+                <div class="grid-depoimentos">
+                    <div class="depoimento-card">
+                        <div class="estrelas">★★★★★</div>
+                        <p>"A velocidade com que a página abre no celular é impressionante. Meus clientes elogiaram a
+                            organização dos botões e o contato ficou muito mais ágil."</p>
+                        <div class="autor-info">
+                            <h4>Mário Silva</h4>
+                            <span>Comércio Local</span>
+                        </div>
+                    </div>
+                    <div class="depoimento-card">
+                        <div class="estrelas">★★★★★</div>
+                        <p>"Paramos de pagar taxas abusivas para agências tradicionais de desenvolvimento. A Altus
+                            entregou
+                            a plataforma perfeita e o atendimento foi exemplar."</p>
+                        <div class="autor-info">
+                            <h4>Ana Júlia</h4>
+                            <span>Profissional Liberal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- FIM DO BLOCO COM SNAP -->
 
     <!-- MINI BLOG / INFORMATIVO -->
     <section id="informativos">
@@ -775,7 +791,7 @@
                     <div class="faq-content">
                         Não utilizamos construtores pesados e genéricos do mercado. Nosso código é escrito de forma
                         nativa e enxuta, garantindo carregamento instantâneo no celular, segurança inviolável contra
-                        vírus e estabilidade total.
+                        vírus e stabile total.
                     </div>
                 </details>
                 <details>
@@ -821,6 +837,10 @@
                         <label>Qual a principal meta ou gargalo digital do seu negócio hoje?</label>
                         <textarea name="message" rows="4" required
                             placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
+                    </div>
+
+                    <div style="display:none;">
+                        <input type="text" name="honeypot" style="display:none">
                     </div>
 
                     <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar
