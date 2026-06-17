@@ -8,13 +8,13 @@
         content="Altus Soluções Digitais - Sites institucionais, landing pages e presença local de alta performance para o seu negócio.">
     <title>Altus Soluções Digitais | Performance e Posicionamento Web</title>
 
-    <!-- Ícone da Aba (Favicon) -->
+    <!-- Ícone da Aba (Favicon Corrigido) -->
     <link rel="icon" type="image/png" href="links/logofavicon.png">
 
     <!-- Fonte Premium do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2=family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
@@ -41,7 +41,7 @@
             padding: 0 24px;
         }
 
-        /* 1. Menu de Topo Flutuante (Sticky Header) */
+        /* 1. Header Flutuante Estilo Hub (Sticky Menu com Botão de Conversão) */
         header {
             position: sticky;
             top: 0;
@@ -50,7 +50,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 12px 0;
         }
 
         header .container {
@@ -59,17 +59,35 @@
             align-items: center;
         }
 
+        /* Logo Reduzido no Topo e Linkável */
+        .logo-link {
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.02);
+        }
+
         .logo-box {
-            width: 100px;
+            width: 75px;
+            /* Tamanho reduzido conforme solicitado */
             background-color: #ffffff;
-            border-radius: 10px;
-            padding: 6px;
+            border-radius: 8px;
+            padding: 5px;
             box-shadow: 0 4px 15px rgba(0, 114, 255, 0.1);
         }
 
         .logo-box img {
             width: 100%;
             display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         nav ul {
@@ -90,7 +108,26 @@
             color: #00c6ff;
         }
 
-        /* Espaçamento das Seções Reduzido para Manter o Ritmo Visual */
+        /* Botão WhatsApp de Canto Direito (Menu) */
+        .btn-nav-whatsapp {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse-glow 3s infinite;
+        }
+
+        .btn-nav-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Espaçamento de Seções Compacto (Pistas Visuais) */
         section {
             padding: 55px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
@@ -107,23 +144,25 @@
 
         .section-title span {
             color: #00c6ff;
+            text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* 2. Hero Section com Animação de Marca d'Água Fluida por CSS */
+        /* 2. Hero Section com Névoas Fluidas Visíveis */
         .hero {
             text-align: center;
-            padding: 90px 0 110px 0;
+            padding: 95px 0 115px 0;
             position: relative;
-            border: none; /* Corrigido aqui */
+            border: none;
         }
 
-        /* Efeitos de Luz em Movimento - Opacidade aumentada para dar contraste */
-        .hero::before, .hero::after {
+        .hero::before,
+        .hero::after {
             content: '';
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.22; /* Aumentado de 0.08 para 0.22 para ficar visível */
+            opacity: 0.22;
+            /* Visibilidade ajustada para vencer o fundo escuro */
             z-index: -1;
             animation: flutuar 20px infinite alternate ease-in-out;
         }
@@ -146,9 +185,17 @@
         }
 
         @keyframes flutuar {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(40px, -30px) scale(1.2); }
-            100% { transform: translate(-30px, 30px) scale(0.85); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(40px, -30px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-30px, 30px) scale(0.85);
+            }
         }
 
         h1 {
@@ -181,6 +228,7 @@
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 114, 255, 0.25);
             transition: all 0.3s ease-in-out;
+            animation: pulse-glow 2.5s infinite;
         }
 
         .btn-cta:hover {
@@ -188,7 +236,21 @@
             box-shadow: 0 12px 30px rgba(0, 114, 255, 0.45);
         }
 
-        /* 3. Grid Confortável de Serviços */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(0, 114, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0);
+            }
+        }
+
+        /* 3. Grid de Serviços Estilo Hub (Glow Neon Borders) */
         .grid-hunter {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -196,16 +258,18 @@
         }
 
         .hunter-card {
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(13, 14, 18, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 35px;
             border-radius: 16px;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .hunter-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(0, 198, 255, 0.2);
+            border-color: #00c6ff;
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.15);
             background: rgba(255, 255, 255, 0.02);
         }
 
@@ -261,6 +325,7 @@
         .membro-card:hover .foto-wrapper {
             border-color: #00c6ff;
             transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.2);
         }
 
         .membro-card:hover .foto-wrapper img {
@@ -281,7 +346,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* 5. Seção de Depoimentos e Avaliações */
+        /* 5. Seção de Depoimentos e Avaliações Neon */
         .grid-depoimentos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -289,10 +354,16 @@
         }
 
         .depoimento-card {
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(13, 14, 18, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 30px;
             border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .depoimento-card:hover {
+            border-color: #0072ff;
+            box-shadow: 0 0 25px rgba(0, 114, 255, 0.12);
         }
 
         .estrelas {
@@ -375,10 +446,16 @@
         .contato-box {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(13, 14, 18, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 40px;
             border-radius: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contato-box:hover {
+            border-color: #00c6ff;
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
         }
 
         form {
@@ -416,7 +493,7 @@
             border-color: #00c6ff;
         }
 
-        /* Rodapé e Assinatura */
+        /* Rodapé com Alinhamento e Simetria Cirúrgica */
         footer {
             padding: 40px 0;
             background: #050608;
@@ -425,12 +502,33 @@
             color: #4b5563;
         }
 
-        footer .container {
+        .footer-grid {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            /* Centralização Absoluta */
+            gap: 24px;
+            text-align: center;
+        }
+
+        /* Logo do Rodapé Forçado no Mesmo Tamanho Exato do Topo */
+        .footer-logo {
+            width: 75px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.05);
+        }
+
+        .footer-logo img {
+            width: 100%;
+            display: block;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .powered-by a {
@@ -451,6 +549,11 @@
                 gap: 15px;
             }
 
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
             nav ul {
                 gap: 15px;
             }
@@ -462,38 +565,38 @@
             section {
                 padding: 45px 0;
             }
-
-            footer .container {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- 1. HEADER & MENU FLUTUANTE -->
+    <!-- 1. HEADER & MENU FLUTUANTE ESTILO HUB -->
     <header>
         <div class="container">
-            <div class="logo-box">
-                <img src="links/logo.png" alt="Altus Soluções Digitais">
-            </div>
+            <!-- Ao clicar na logo, retorna para a página inicial no topo (#) -->
+            <a href="#" class="logo-link">
+                <div class="logo-box">
+                    <img src="links/logo.png" alt="Altus Soluções Digitais">
+                </div>
+            </a>
             <nav>
                 <ul>
                     <li><a href="#">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#equipe">A Altus</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contato">Contato</a></li>
                 </ul>
+                <!-- Botão de Conversão Direta no Menu Superior -->
+                <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20diagnostico."
+                    target="_blank" class="btn-nav-whatsapp">Conversar no WhatsApp</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
 
-        <!-- 2. HERO SECTION COM ANIMAÇÃO NATIVA -->
+        <!-- 2. HERO SECTION COM ANIMAÇÃO NATIVA AUMENTADA -->
         <section class="hero">
             <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
             <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
@@ -501,7 +604,7 @@
             <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
         </section>
 
-        <!-- 3. GRID DE SERVIÇOS E ESPECIALIDADES -->
+        <!-- 3. GRID DE SERVIÇOS (GLOW NEON) -->
         <section id="servicos">
             <h2 class="section-title">Nossas <span>Especialidades</span> de Entrega</h2>
             <div class="grid-hunter">
@@ -655,16 +758,22 @@
 
     </main>
 
-    <!-- RODAPÉ COMPLETO COM CRÉDITO SUTIL -->
+    <!-- RODAPÉ SYMETRICO E CENTRALIZADO -->
     <footer>
         <div class="container">
-            <div>
-                <p>&copy; 2026 Altus Soluções Digitais. Todos os direitos reservados.</p>
-                <p style="font-size: 0.75rem; margin-top: 4px; color: #374151;">Infraestrutura e posicionamento web de
-                    alta performance.</p>
-            </div>
-            <div class="powered-by">
-                <p>powered by <a href="links/index.html">altus</a></p>
+            <div class="footer-grid">
+                <!-- Logo Centralizada do Mesmo Tamanho Exato do Topo -->
+                <div class="footer-logo">
+                    <img src="links/logo.png" alt="Altus Soluções Digitais">
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2026 Altus Soluções Digitais. Todos os direitos reservados.</p>
+                    <p style="font-size: 0.75rem; color: #374151;">Infraestrutura e posicionamento web de alta
+                        performance.</p>
+                </div>
+                <div class="powered-by">
+                    <p>powered by <a href="links/index.html">altus</a></p>
+                </div>
             </div>
         </div>
     </footer>
