@@ -738,6 +738,91 @@
         .powered-by a:hover {
             color: #00c6ff;
         }
+        
+        /* --- 7. ESTRUTURA DIVIDIDA DO CONTATO --- */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contato-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .tag-diagnostico {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 18px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            border-radius: 30px;
+            color: #00c6ff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            background: rgba(0, 198, 255, 0.05);
+        }
+
+        .contato-copy h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .contato-copy h2 span {
+            color: #00c6ff;
+        }
+
+        .contato-copy .subtitle {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contato-copy .info-extra {
+            margin-top: 10px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contato-copy .info-extra p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Ajuste do comportamento do formulário para o Grid */
+        .contato-box {
+            margin: 0; 
+            max-width: 100%; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); /* Destaque sobre o fundo */
+        }
+
+        /* Responsividade Específica do Contato */
+        @media (max-width: 900px) {
+            .contato-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contato-copy {
+                align-items: center;
+                text-align: center;
+            }
+
+            .contato-copy h2 {
+                font-size: 2.2rem;
+            }
+        }
 
         @media (max-width: 768px) {
             header {
@@ -1080,35 +1165,57 @@
     <!-- 7. FORMULÁRIO DE CONTATO -->
     <section id="contato">
         <div class="container">
-            <h2 class="section-title">Agende um <span>Diagnóstico Gratuito</span></h2>
-            <div class="contato-box">
-                <form action="https://api.staticforms.xyz/submit" method="post">
-                    <input type="hidden" name="accessKey" value="SUA_CHAVE_AQUI">
-                    <input type="hidden" name="redirectTo" value="https://keriston-lab.github.io/testecartaodevisita/">
-
-                    <div class="form-group">
-                        <label>Nome do Proprietário / Empresa</label>
-                        <input type="text" name="name" required placeholder="Ex: João Silva - Oficina Central">
+            <div class="contato-grid">
+    
+                <div class="contato-copy">
+                    <div class="tag-diagnostico">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Diagnóstico estratégico gratuito
                     </div>
-
-                    <div class="form-group">
-                        <label>WhatsApp para Contato</label>
-                        <input type="text" name="phone" required placeholder="Ex: (19) 99999-9999">
+                    <h2>Pronto para transformar seu <span>faturamento?</span></h2>
+                    <p class="subtitle">Solicite um diagnóstico estratégico gratuito do seu negócio. Vamos analisar seu
+                        cenário e mostrar como podemos ajudar você a crescer de verdade.</p>
+    
+                    <div class="info-extra">
+                        <p>O diagnóstico é uma análise estratégica do seu negócio para identificar os melhores caminhos de
+                            crescimento, campanhas ideais, estrutura de vendas e automações necessárias para escalar seu
+                            faturamento.</p>
                     </div>
-
-                    <div class="form-group">
-                        <label>Qual a principal meta ou gargalo digital do seu negócio hoje?</label>
-                        <textarea name="message" rows="4" required
-                            placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
-                    </div>
-
-                    <div style="display:none;">
-                        <input type="text" name="honeypot" style="display:none">
-                    </div>
-
-                    <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar
-                        Dados e Solicitar Análise</button>
-                </form>
+                </div>
+    
+                <div class="contato-box">
+                    <form action="https://api.staticforms.xyz/submit" method="post">
+                        <input type="hidden" name="accessKey" value="SUA_CHAVE_AQUI">
+                        <input type="hidden" name="redirectTo" value="https://keriston-lab.github.io/testecartaodevisita/">
+    
+                        <div class="form-group">
+                            <label>Nome do Proprietário / Empresa</label>
+                            <input type="text" name="name" required placeholder="Ex: João Silva - Oficina Central">
+                        </div>
+    
+                        <div class="form-group">
+                            <label>WhatsApp para Contato</label>
+                            <input type="text" name="phone" required placeholder="Ex: (19) 99999-9999">
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Qual a principal meta ou gargalo digital do seu negócio hoje?</label>
+                            <textarea name="message" rows="4" required
+                                placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
+                        </div>
+    
+                        <div style="display:none;">
+                            <input type="text" name="honeypot" style="display:none">
+                        </div>
+    
+                        <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar
+                            Dados e Solicitar Análise</button>
+                    </form>
+                </div>
+    
             </div>
         </div>
     </section>
