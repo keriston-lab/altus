@@ -164,21 +164,26 @@
             width: 100%;
         }
 
-        /* CAMADA PARALLAX CORRIGIDA: SEM CORTAR O TOPO E INVADINDO A SEÇÃO INFERIOR */
+        /* CAMADA PARALLAX */
         .hero-parallax-bg {
             position: absolute;
-            top: 0; /* Puxado de volta para o topo para revelar a ponta do símbolo */
+            top: -40px; /* Começa ligeiramente mais alta para dar curso de movimento */
             left: 50%;
             transform: translateX(-50%);
             width: 100vw; 
-            height: 125%; /* Estendido para transbordar a borda arredondada e invadir a seção abaixo */
-            background-image: linear-gradient(to bottom, rgba(5,6,8,0.2), rgba(5,6,8,0.9)), url('links/logosemfundo.png');
-            background-attachment: fixed; /* Física estática do Parallax */
-            background-position: center 15%; /* Ajuste fino para enquadrar perfeitamente atrás do texto */
-            background-size: 80%; /* Mantém a logo imponente sem estourar as laterais */
+            height: 140%; /* Altura estendida para garantir o sangramento contínuo */
+            background-image: linear-gradient(to bottom, rgba(5,6,8,0.1), rgba(5,6,8,0.92)), url('links/logosemfundo.png');
+            
+            /* AQUI ESTÁ O SEGREDO: REMOVIDO O FIXED. O FUNDO AGORA DESLIZA SUAVE COM O SEU DEDO */
+            background-attachment: scroll; 
+            background-position: center top;
+            background-size: 85%;
             background-repeat: no-repeat;
             z-index: 0;
             pointer-events: none;
+            
+            /* Cria uma transição amortecida para quando o scroll snapping for acionado */
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .hero-animation-overlay {
