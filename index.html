@@ -8,17 +8,15 @@
         content="Altus Soluções Digitais - Sites institucionais, landing pages e presença local de alta performance para o seu negócio.">
     <title>Altus Soluções Digitais | Performance e Posicionamento Web</title>
 
-    <!-- Ícone da Aba (Favicon Corrigido) -->
     <link rel="icon" type="image/png" href="links/logofavicon.png">
 
-    <!-- Fonte Premium do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
-        /* Fundações, Reset e Mecânica de Rolagem Suavizada (Estilo Hub Proximity) */
+        /* Fundações, Reset e Mecânica de Rolagem Suavizada */
         html {
             scroll-snap-type: y proximity;
             scroll-behavior: smooth;
@@ -112,7 +110,6 @@
             color: #00c6ff;
         }
 
-        /* Botão do WhatsApp Integrado no Canto Superior Direito da Barra */
         .btn-header-whatsapp {
             display: inline-flex;
             align-items: center;
@@ -135,7 +132,7 @@
             filter: brightness(1.05);
         }
 
-        /* Configuração de Seções Gerais - Correção do título oculto atrás do menu */
+        /* Configuração de Seções Gerais */
         section {
             padding: 45px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
@@ -146,7 +143,6 @@
             scroll-margin-top: 90px;
         }
 
-        /* Container de Snapping focado unicamente entre a Equipe e Depoimentos */
         .snap-section-target {
             scroll-snap-align: start;
         }
@@ -165,7 +161,6 @@
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* Subtítulo da seção de serviços */
         .section-subtitle {
             text-align: center;
             color: #9ca3af;
@@ -175,7 +170,7 @@
             line-height: 1.6;
         }
 
-        /* 2. Hero Section: Expansão Horizontal Máxima com Moldura Arredondada */
+        /* 2. Hero Section */
         .hero-wrapper {
             padding: 20px 12px;
             width: 100%;
@@ -196,7 +191,6 @@
             width: 100%;
         }
 
-        /* Camada de fundo controlada */
         .hero-parallax-bg {
             position: absolute;
             top: -40px;
@@ -235,11 +229,10 @@
             100% {
                 transform: scale(1.08) translate(15px, -15px);
                 filter: hue-rotate(10deg);
-                /* Preservado conforme solicitado */
             }
         }
 
-        /* Glassmorphism Card com desfoque e foco na leitura */
+        /* Glassmorphism Card + Efeito de Rastro no Hero */
         .glass-card {
             position: relative;
             z-index: 2;
@@ -254,6 +247,38 @@
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             text-align: center;
+            overflow: hidden;
+            /* Garante que o rastro não vaze */
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradiente magnético focado e mais intenso */
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(0, 198, 255, 0.15),
+                    rgba(255, 122, 0, 0.05) 45%,
+                    transparent 60%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card h1,
+        .glass-card p,
+        .glass-card .btn-cta {
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -303,21 +328,18 @@
         @keyframes pulse-glow {
             0% {
                 box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.5);
-                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.5);
             }
 
             70% {
-                box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
                 box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
             }
 
             100% {
                 box-shadow: 0 0 0 0 rgba(0, 114, 255, 0);
-                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0);
             }
         }
 
-        /* 3. Grid de Serviços Estilo Hub Neon */
+        /* 3. Grid de Serviços */
         .grid-hunter {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -358,7 +380,7 @@
             font-size: 0.95rem;
         }
 
-        /* 4. Seção Equipe e Ativação Exclusiva de Snap Container */
+        /* 4. Seção Equipe */
         .snap-container-wrapper {
             scroll-snap-type: y proximity;
             width: 100%;
@@ -419,7 +441,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* NOVO: Engenharia da Esteira de Rolagem Infinita e Jateamento de Bordas (Estilo Hub) */
+        /* Ticker Marcas */
         .brand-ticker-section {
             background: rgba(255, 255, 255, 0.01);
             overflow: hidden;
@@ -446,17 +468,14 @@
             letter-spacing: -0.5px;
             z-index: 5;
             background: #050608;
-            /* Cobre o fundo para manter fixo à esquerda */
             padding-right: 20px;
         }
 
-        /* Máscara de Transição de Opacidade das Laterais */
         .ticker-track-wrapper {
             overflow: hidden;
             position: relative;
             width: 100%;
             display: flex;
-            /* Máscara jateada que clareia e escurece os logos nas pontas */
             -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
             mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
@@ -467,10 +486,8 @@
             align-items: center;
             width: max-content;
             animation: travelTicker 30s linear infinite;
-            /* Movimento automático suave e contínuo */
         }
 
-        /* Interrompe a rolagem ao passar o mouse para leitura detalhada */
         .ticker-track:hover {
             animation-play-state: paused;
         }
@@ -483,7 +500,6 @@
             font-size: 1.1rem;
             font-weight: 600;
             opacity: 0.35;
-            /* Começa escurecido sutil */
             letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -498,7 +514,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Clareia o item acendendo a marca no foco do mouse */
         .ticker-item:hover {
             opacity: 0.95;
             color: #00c6ff;
@@ -509,7 +524,6 @@
             transform: scale(1.08);
         }
 
-        /* Mecânica de Loop Infinito Perfeito */
         @keyframes travelTicker {
             0% {
                 transform: translateX(0);
@@ -518,8 +532,6 @@
             100% {
                 transform: translateX(-50%);
             }
-
-            /* Rola até a metade idêntica e reseta invisivelmente */
         }
 
         /* 5. Depoimentos */
@@ -586,7 +598,6 @@
             cursor: default;
         }
 
-        /* Efeito de rastro do mouse (Hover interativo) */
         .method-card::before {
             content: '';
             position: absolute;
@@ -594,35 +605,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Mistura de Laranja/Âmbar com o Azul Neon da marca */
-            background: radial-gradient(
-                400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                rgba(255, 122, 0, 0.12),
-                rgba(0, 198, 255, 0.05) 40%,
-                transparent 60%
-            );
+            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(255, 122, 0, 0.12),
+                    rgba(0, 198, 255, 0.05) 40%,
+                    transparent 60%);
             z-index: 0;
             opacity: 0;
             transition: opacity 0.4s ease;
-            pointer-events: none; /* Garante que não interfira no clique/leitura */
+            pointer-events: none;
         }
 
         .method-card:hover::before {
             opacity: 1;
         }
 
-        /* Borda de destaque no hover para fechar o visual premium */
         .method-card:hover {
             border-color: rgba(255, 122, 0, 0.3);
         }
 
-        /* Conteúdo elevado acima do gradiente */
         .method-content {
             position: relative;
             z-index: 2;
         }
 
-        /* Número grande no fundo simulando o estilo do seu primeiro print */
         .method-step-bg {
             font-size: 6rem;
             font-weight: 800;
@@ -653,14 +658,7 @@
             line-height: 1.6;
         }
 
-        /* Responsividade para celulares */
-        @media (max-width: 900px) {
-            .metodologia-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* 6. FAQ */
+        /* 6. FAQ SANFONA */
         .faq-wrapper {
             max-width: 750px;
             margin: 0 auto;
@@ -713,18 +711,117 @@
             font-size: 0.95rem;
         }
 
-        /* 7. Formulário */
-        .contato-box {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(13, 14, 18, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 40px;
-            border-radius: 20px;
+        /* --- 7. ESTRUTURA DIVIDIDA DO CONTATO E EFEITOS --- */
+        #contato {
+            /* Fundo com névoa colorida cruzada */
+            background:
+                radial-gradient(circle at 10% 90%, rgba(0, 198, 255, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at 90% 10%, rgba(255, 122, 0, 0.04) 0%, transparent 50%);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             width: 100%;
         }
 
-        form {
+        .contato-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .tag-diagnostico {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 18px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            border-radius: 30px;
+            color: #00c6ff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            background: rgba(0, 198, 255, 0.05);
+        }
+
+        .contato-copy h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .contato-copy h2 span {
+            color: #00c6ff;
+        }
+
+        .contato-copy .subtitle {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contato-copy .info-extra {
+            margin-top: 10px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contato-copy .info-extra p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .contato-box {
+            margin: 0;
+            max-width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            background: rgba(13, 14, 18, 0.85);
+            transition: border-color 0.3s ease;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+        }
+
+        /* Efeito de Rastro no Formulário */
+        .contato-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(0, 198, 255, 0.08),
+                    transparent 60%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .contato-box:hover::before {
+            opacity: 1;
+        }
+
+        .contato-box:hover {
+            border-color: rgba(0, 198, 255, 0.3);
+        }
+
+        .contato-box form {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -804,7 +901,7 @@
             border-color: #00c6ff;
         }
 
-        /* Rodapé Centralizado Simétrico */
+        /* Rodapé */
         footer {
             padding: 40px 0;
             background: #020304;
@@ -843,81 +940,17 @@
             color: #00c6ff;
         }
 
-        /* --- 7. ESTRUTURA DIVIDIDA DO CONTATO --- */
-        .contato-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .contato-copy {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .tag-diagnostico {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 18px;
-            border: 1px solid rgba(0, 198, 255, 0.3);
-            border-radius: 30px;
-            color: #00c6ff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            background: rgba(0, 198, 255, 0.05);
-        }
-
-        .contato-copy h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            color: #ffffff;
-            letter-spacing: -1px;
-        }
-
-        .contato-copy h2 span {
-            color: #00c6ff;
-        }
-
-        .contato-copy .subtitle {
-            font-size: 1.1rem;
-            color: #9ca3af;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .contato-copy .info-extra {
-            margin-top: 10px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .contato-copy .info-extra p {
-            font-size: 0.9rem;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* Ajuste do comportamento do formulário para o Grid */
-        .contato-box {
-            margin: 0; 
-            max-width: 100%; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3); /* Destaque sobre o fundo */
-        }
-
-        /* Responsividade Específica do Contato */
+        /* Media Queries */
         @media (max-width: 900px) {
+            .metodologia-grid {
+                grid-template-columns: 1fr;
+            }
+
             .contato-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
+
             .contato-copy {
                 align-items: center;
                 text-align: center;
@@ -1023,7 +1056,6 @@
 
 <body>
 
-    <!-- CONTAINER DOS BOTÕES FLUTUANTES FIXOS NO CANTO INFERIOR -->
     <div class="floating-actions-container">
         <a href="#" class="action-circle btn-float-top" title="Voltar ao Topo">&uarr;</a>
         <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20gostaria%20de%20um%20diagnostico%20digital%20gratuito."
@@ -1035,7 +1067,6 @@
         </a>
     </div>
 
-    <!-- 1. HEADER -->
     <header>
         <div class="container">
             <a href="#" class="logo-link">
@@ -1056,7 +1087,6 @@
         </div>
     </header>
 
-    <!-- 2. MOLDURA MESTRA DA HERO -->
     <div class="hero-wrapper">
         <section class="hero">
             <div class="hero-parallax-bg"></div>
@@ -1071,35 +1101,33 @@
         </section>
     </div>
 
-    <!-- 3. GRID DE SERVIÇOS NEON -->
     <section id="servicos" style="z-index: 5; background-color: transparent;">
         <div class="container">
             <h2 class="section-title" style="margin-bottom: 15px;">Nossas <span>Especialidades</span> de Entrega</h2>
             <p class="section-subtitle">Do design à estratégia, cuidamos de cada detalhe para sua marca se destacar no
                 mercado.</p>
-    
+
             <div class="grid-hunter">
-                <!-- 1º Cartão: Cartões de Visita (Movido para a esquerda) -->
                 <div class="hunter-card">
                     <div class="hunter-icon">🚀</div>
                     <h3>Cartões de Visita Digitais</h3>
                     <p>Estruturas centralizadas de contato para substituir os links poluídos da bio do seu Instagram,
-                        desenhadas especificamente para forçar o clique em direção ao seu WhatsApp ou Contato de Vendas.</p>
+                        desenhadas especificamente para forçar o clique em direção ao seu WhatsApp ou Contato de Vendas.
+                    </p>
                 </div>
-    
-                <!-- 2º Cartão: Presença Local Suprema (Mantido no meio) -->
+
                 <div class="hunter-card">
                     <div class="hunter-icon">📍</div>
                     <h3>Presença Local Suprema</h3>
                     <p>Otimização estratégica do Perfil da sua Empresa no Google Maps. Posicionamos seu comércio à
                         frente da concorrência quando os clientes buscarem na região.</p>
                 </div>
-    
-                <!-- 3º Cartão: Landing Pages (Movido para a direita) -->
+
                 <div class="hunter-card">
                     <div class="hunter-icon">🌐</div>
                     <h3>Landing Pages & Sites Institucionais</h3>
-                    <p>Páginas de alta conversão com design alinhado à identidade da sua marca. Estrutura blindada contra invasões,
+                    <p>Páginas de alta conversão com design alinhado à identidade da sua marca. Estrutura blindada
+                        contra invasões,
                         otimização nativa para dominar as buscas do Google e das novas IAs e ultraleve para carregamento
                         instantâneo em celulares.</p>
                 </div>
@@ -1107,14 +1135,13 @@
         </div>
     </section>
 
-    <!-- CONTAINER INTEGRADO PARA O EMBUTIMENTO DO SCROLL AUTOMÁTICO EXCLUSIVO -->
     <div class="snap-container-wrapper">
 
-        <!-- 4. EQUIPE E COLABORADORES -->
         <section id="equipe" class="snap-section-target">
             <div class="container">
                 <h2 class="section-title">Quem Executa a sua <span>Estratégia</span></h2>
                 <div class="grid-equipe">
+
                     <div class="membro-card">
                         <div class="foto-wrapper">
                             <img src="links/logo.png" alt="Keriston Marcelo">
@@ -1122,22 +1149,36 @@
                         <h3>Keriston Marcelo</h3>
                         <p>Estrategista de Performance Web</p>
                     </div>
+
+                    <div class="membro-card">
+                        <div class="foto-wrapper">
+                            <img src="links/logo.png" alt="Fábio Neves">
+                        </div>
+                        <h3>Fábio Neves</h3>
+                        <p style="margin-bottom: 2px;">Gestor de Tráfego</p>
+                        <span
+                            style="font-size: 0.75rem; color: #6b7280; font-weight: 600; text-transform: uppercase;">CS
+                            - Sucesso do Cliente</span>
+                    </div>
+
+                    <div class="membro-card" style="opacity: 0.6;">
+                        <div class="foto-wrapper" style="border-style: dashed;">
+                            <img src="links/logosemfundo.png" alt="Marketing Digital" style="opacity: 0.3;">
+                        </div>
+                        <h3>[ Em Breve ]</h3>
+                        <p>Marketing Digital</p>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- NOVO: ESTEIRA DE ROLAGEM INFINITA AUTOMATIZADA COM MARCAS VITRINE (ESTILO HUB) -->
         <section id="parceiros" class="brand-ticker-section snap-section-target">
             <div class="container">
                 <div class="ticker-container">
-                    <div class="ticker-title">
-                        Empresas que confiam no nosso trabalho
-                    </div>
+                    <div class="ticker-title">Empresas que confiam no nosso trabalho</div>
                     <div class="ticker-track-wrapper">
-                        <!-- O trilho possui duas sequências idênticas (Original + Espelho) para o loop ser eterno e fluido -->
                         <div class="ticker-track">
-
-                            <!-- Bloco Original (Apenas altere os textos/ícones no futuro por tags <img>) -->
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 22h20L12 2z" />
                                 </svg>Focar Info</div>
@@ -1157,7 +1198,6 @@
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
                                 </svg>Festa Bar</div>
 
-                            <!-- Bloco Gêmeo Espelho (Garante a continuidade infinita do movimento) -->
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 22h20L12 2z" />
                                 </svg>Focar Info</div>
@@ -1176,14 +1216,12 @@
                                     <path
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
                                 </svg>Festa Bar</div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. DEPOIMENTOS (O QUE DIZEM NOSSOS PARCEIROS) -->
         <section id="depoimentos" class="snap-section-target">
             <div class="container">
                 <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
@@ -1213,7 +1251,6 @@
 
     </div>
 
-    <!-- MINI BLOG / INFORMATIVO -->
     <section id="informativos">
         <div class="container">
             <h2 class="section-title">Estratégia e <span>Posicionamento</span></h2>
@@ -1247,18 +1284,19 @@
             <h2 class="section-title" style="margin-bottom: 15px;">Como construímos sua <span>Autoridade</span></h2>
             <p class="section-subtitle">Um processo de engenharia digital guiado por dados, focado em alta performance e
                 resultados reais.</p>
-    
+
             <div class="metodologia-grid">
                 <div class="method-card">
                     <div class="method-step-bg">01</div>
                     <div class="method-content">
                         <h3>Descoberta & Análise de IA</h3>
                         <p>Mapeamos o comportamento do seu mercado através de ferramentas de Inteligência Artificial.
-                            Entendemos as lacunas deixadas pela concorrência para definir a arquitetura de conversão exata
+                            Entendemos as lacunas deixadas pela concorrência para definir a arquitetura de conversão
+                            exata
                             que o seu cliente procura.</p>
                     </div>
                 </div>
-    
+
                 <div class="method-card">
                     <div class="method-step-bg">02</div>
                     <div class="method-content">
@@ -1268,13 +1306,15 @@
                             reter usuários de celular.</p>
                     </div>
                 </div>
-    
+
                 <div class="method-card">
                     <div class="method-step-bg">03</div>
                     <div class="method-content">
                         <h3>Indexação & Performance</h3>
-                        <p>Finalizamos com a otimização técnica avançada. Cada linha de código é estruturada semanticamente
-                            para que os motores de busca do Google e as IAs de recomendação posicionem sua empresa no topo
+                        <p>Finalizamos com a otimização técnica avançada. Cada linha de código é estruturada
+                            semanticamente
+                            para que os motores de busca do Google e as IAs de recomendação posicionem sua empresa no
+                            topo
                             das buscas locais.</p>
                     </div>
                 </div>
@@ -1282,7 +1322,6 @@
         </div>
     </section>
 
-    <!-- 6. FAQ SANFONA -->
     <section id="faq">
         <div class="container">
             <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
@@ -1315,15 +1354,14 @@
         </div>
     </section>
 
-    <!-- 7. FORMULÁRIO DE CONTATO -->
     <section id="contato">
         <div class="container">
             <div class="contato-grid">
-    
+
                 <div class="contato-copy">
                     <div class="tag-diagnostico">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                         Diagnóstico estratégico gratuito
@@ -1331,49 +1369,50 @@
                     <h2>Pronto para transformar seu <span>faturamento?</span></h2>
                     <p class="subtitle">Solicite um diagnóstico estratégico gratuito do seu negócio. Vamos analisar seu
                         cenário e mostrar como podemos ajudar você a crescer de verdade.</p>
-    
+
                     <div class="info-extra">
-                        <p>O diagnóstico é uma análise estratégica do seu negócio para identificar os melhores caminhos de
+                        <p>O diagnóstico é uma análise estratégica do seu negócio para identificar os melhores caminhos
+                            de
                             crescimento, campanhas ideais, estrutura de vendas e automações necessárias para escalar seu
                             faturamento.</p>
                     </div>
                 </div>
-    
+
                 <div class="contato-box">
                     <form action="https://api.staticforms.xyz/submit" method="post">
                         <input type="hidden" name="accessKey" value="SUA_CHAVE_AQUI">
-                        <input type="hidden" name="redirectTo" value="https://keriston-lab.github.io/testecartaodevisita/">
-    
+                        <input type="hidden" name="redirectTo"
+                            value="https://keriston-lab.github.io/testecartaodevisita/">
+
                         <div class="form-group">
                             <label>Nome do Proprietário / Empresa</label>
                             <input type="text" name="name" required placeholder="Ex: João Silva - Oficina Central">
                         </div>
-    
+
                         <div class="form-group">
                             <label>WhatsApp para Contato</label>
                             <input type="text" name="phone" required placeholder="Ex: (19) 99999-9999">
                         </div>
-    
+
                         <div class="form-group">
                             <label>Qual a principal meta ou gargalo digital do seu negócio hoje?</label>
                             <textarea name="message" rows="4" required
                                 placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
                         </div>
-    
+
                         <div style="display:none;">
                             <input type="text" name="honeypot" style="display:none">
                         </div>
-    
+
                         <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar
                             Dados e Solicitar Análise</button>
                     </form>
                 </div>
-    
+
             </div>
         </div>
     </section>
 
-    <!-- RODAPÉ SÉMETRICO CENTRALIZADO -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1393,15 +1432,14 @@
     </footer>
 
     <script>
-        document.querySelectorAll('.method-card').forEach(card => {
+        const interactiveCards = document.querySelectorAll('.method-card, .glass-card, .contato-box');
+
+        interactiveCards.forEach(card => {
             card.addEventListener('mousemove', e => {
-                // Pega o tamanho e posição do card na tela
                 const rect = card.getBoundingClientRect();
-                // Calcula a posição do mouse em relação ao card
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
-                // Injeta as coordenadas no CSS
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
