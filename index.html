@@ -140,13 +140,12 @@
             color: #00c6ff;
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
-
-        /* 2. Hero Section: Aumento drástico da horizontalidade lateral */
+        
+       /* 2. Hero Section: Expansão Horizontal Máxima e Ajuste de Quebra de Texto */
         .hero-wrapper {
-            padding: 40px 24px 20px 24px;
+            padding: 20px 12px; /* Margem sutil para preservar o contorno nas bordas */
             width: 100%;
-            max-width: 1350px;
-            /* Expandido de 1150px para 1350px para maior ganho lateral */
+            max-width: 100%; /* Ocupa toda a extensão horizontal do monitor */
             margin: 0 auto;
         }
 
@@ -158,9 +157,8 @@
             background-size: cover;
             position: relative;
             overflow: hidden;
-            background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.75), rgba(13, 14, 18, 0.7)), url('links/logosemfundo.png');
-            padding: 100px 40px;
-            /* Expandido para espalhar mais os elementos */
+            background-image: linear-gradient(to bottom, rgba(5,6,8,0.75), rgba(13,14,18,0.7)), url('links/logosemfundo.png');
+            padding: 110px 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -174,23 +172,17 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 15% 25%, rgba(0, 114, 255, 0.2) 0%, transparent 45%),
-                radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.15) 0%, transparent 50%);
+                        radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.15) 0%, transparent 50%);
             z-index: 1;
             animation: backgroundShift 18px linear infinite alternate;
         }
 
         @keyframes backgroundShift {
-            0% {
-                transform: scale(1) translate(0, 0);
-                filter: hue-rotate(0deg);
-            }
-
-            100% {
-                transform: scale(1.08) translate(15px, -15px) filter: hue-rotate(10deg);
-            }
+            0% { transform: scale(1) translate(0, 0); filter: hue-rotate(0deg); }
+            100% { transform: scale(1.08) translate(15px, -15px) filter: hue-rotate(10deg); }
         }
 
-        /* Glassmorphism Card com mais espaço horizontal para as bordas */
+        /* Glassmorphism Card alargado para forçar o término da linha em "elite" */
         .glass-card {
             position: relative;
             z-index: 2;
@@ -199,11 +191,9 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 55px 60px;
-            /* Expandido o preenchimento lateral interno */
+            padding: 60px 50px;
             width: 100%;
-            max-width: 1000px;
-            /* Aumentado limite da caixa de texto interna */
+            max-width: 1060px; /* Alargado estrategicamente para a distribuição do título */
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             text-align: center;
@@ -212,18 +202,24 @@
         h1 {
             font-size: 3rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
             letter-spacing: -1px;
             margin-bottom: 24px;
             background: linear-gradient(135deg, #fff 65%, #00c6ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            max-width: 760px; /* Trava a largura da caixa do título para ditar a quebra ideal */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .glass-card p {
             font-size: 1.2rem;
             color: #9ca3af;
             margin-bottom: 40px;
+            max-width: 820px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-cta {
