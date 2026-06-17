@@ -28,14 +28,14 @@ body {
 header {
     position: sticky;
     top: 0;
-    /* Degradê triplo: Azul claro (esquerda inferior) -> Rosa (meio) -> Laranja (direita superior) */
-    background: linear-gradient(to top right, rgba(0, 198, 255, 0.92) 0%, rgba(238, 9, 121, 0.92) 50%, rgba(255, 106, 0, 0.92) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    /* Aumentada a transparência para 0.75 para dar mais poder ao vidro jateado */
+    background: linear-gradient(to top right, rgba(0, 198, 255, 0.75) 0%, rgba(238, 9, 121, 0.75) 50%, rgba(255, 106, 0, 0.75) 100%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
     padding: 12px 0;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
 }
 
 header .container {
@@ -60,7 +60,6 @@ header .container {
     border-radius: 8px;
     padding: 5px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    /* Sombra escurecida para destacar o fundo branco no laranja */
 }
 
 .logo-box img {
@@ -81,10 +80,8 @@ nav ul {
     align-items: center;
 }
 
-/* Ajuste da cor dos links para leitura sobre fundo colorido */
 nav ul li a {
     color: rgba(255, 255, 255, 0.85);
-    /* Branco levemente opaco */
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -93,22 +90,22 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #ffffff;
-    /* Fica 100% branco luminoso no hover */
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
+/* Botão WhatsApp em Azul Neon */
 .btn-header-whatsapp {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #25d366, #128c7e);
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
     color: #fff !important;
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 114, 255, 0.25);
     transition: all 0.2s ease-in-out;
     margin-left: 5px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -116,13 +113,7 @@ nav ul li a:hover {
 
 .btn-header-whatsapp:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.45);
-    filter: brightness(1.05);
-}
-
-.btn-header-whatsapp:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.35);
+    box-shadow: 0 6px 15px rgba(0, 114, 255, 0.45);
     filter: brightness(1.05);
 }
 
@@ -159,15 +150,13 @@ section {
     line-height: 1.6;
 }
 
-/* 2. Hero Section */
+/* 2. Hero Section e Background Global */
 .hero-wrapper {
     padding: 20px 12px;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
-    /* A trava isolada fica aqui! */
 }
 
 .hero {
@@ -180,25 +169,38 @@ section {
     align-items: center;
     justify-content: center;
     width: 100%;
-    overflow: hidden;
-    /* Esta é a trava que corta a sobra da imagem */
 }
 
-.hero-parallax-bg {
+/* O novo Logo Gigante que atravessa as seções */
+.global-logo-bg {
     position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 140%;
-    background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.1), rgba(5, 6, 8, 0.92)), url('links/logosemfundo.png');
-    background-attachment: scroll;
-    background-position: center top;
-    background-size: 85%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1800px;
+    /* Desce o suficiente para cobrir Hero, Serviços e passar pela Equipe */
+    background-image:
+        linear-gradient(to bottom, rgba(5, 6, 8, 0.1) 0%, rgba(5, 6, 8, 0.8) 70%, rgba(5, 6, 8, 1) 100%),
+        url('links/logosemfundo.png');
+    background-position: center 100px;
+    /* Deslocado um pouco para baixo do Header */
+    background-size: 800px;
     background-repeat: no-repeat;
-    z-index: 0;
+    z-index: -1;
+    /* Mantém atrás de tudo no site */
     pointer-events: none;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Expansão da névoa do logo para telas de celular (que são mais compridas) */
+@media (max-width: 768px) {
+    .global-logo-bg {
+        height: 2400px;
+        background-size: 150%;
+        background-position: center 140px;
+        background-image:
+            linear-gradient(to bottom, rgba(5, 6, 8, 0.1) 0%, rgba(5, 6, 8, 0.9) 80%, rgba(5, 6, 8, 1) 100%),
+            url('links/logosemfundo.png');
+    }
 }
 
 .hero-animation-overlay {
