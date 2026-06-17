@@ -142,34 +142,49 @@
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* 2. Hero Section: Expansão Horizontal Máxima e Ajuste de Quebra de Texto */
+        /* 2. Hero Section: Expansão Horizontal Máxima com Moldura Arredondada */
         .hero-wrapper {
             padding: 20px 12px;
-            /* Margem sutil para preservar o contorno nas bordas */
             width: 100%;
             max-width: 100%;
-            /* Ocupa toda a extensão horizontal do monitor */
             margin: 0 auto;
+            position: relative;
+            /* Base de ancoragem para a logo flutuante */
         }
 
         .hero {
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 24px;
-            background-attachment: fixed; /* Mantém o Parallax Estático */
-            
-            /* CORREÇÃO DO ENQUADRAMENTO DA LOGO */
-            background-position: center 30%; /* Empurra a imagem um pouco mais para baixo (antes estava center) */
-            background-size: 85%; /* Reduz sutilmente de 'cover' para 85% para não cortar o topo no zoom */
-            
-            background-repeat: no-repeat; /* Garante que a logo não fique se duplicando */
             position: relative;
             overflow: hidden;
-            background-image: linear-gradient(to bottom, rgba(5,6,8,0.75), rgba(13,14,18,0.7)), url('links/logosemfundo.png');
+            background-color: rgba(5, 6, 8, 0.45);
+            /* Base escura translúcida para dar leitura */
             padding: 110px 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
+        }
+
+        /* CAMADA PARALLAX INDEPENDENTE DA LOGO: GIGANTE, FLUTUANTE E SEM CORTES */
+        .hero-parallax-bg {
+            position: absolute;
+            top: 80px;
+            /* Desloca o topo da logo para baixo de forma cirúrgica */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120vw;
+            /* Faz a logo ficar gigante invadindo as laterais */
+            height: 140%;
+            /* Estende a altura para sangrar e invadir a próxima seção */
+            background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.4), rgba(5, 6, 8, 0.85)), url('links/logosemfundo.png');
+            background-attachment: fixed;
+            /* Sustenta a física estática Parallax */
+            background-position: center top;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .hero-animation-overlay {
@@ -178,11 +193,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 15% 25%, rgba(0, 114, 255, 0.2) 0%, transparent 45%),
-                radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 15% 25%, rgba(0, 114, 255, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.12) 0%, transparent 50%);
             z-index: 1;
             animation: backgroundShift 18s linear infinite alternate;
-            /* Corrigido de 18px para 18s */
         }
 
         @keyframes backgroundShift {
@@ -197,11 +211,11 @@
             }
         }
 
-        /* Glassmorphism Card alargado para forçar o término da linha em "elite" */
+        /* Glassmorphism Card com desfoque e foco na leitura */
         .glass-card {
             position: relative;
             z-index: 2;
-            background: rgba(13, 14, 18, 0.45);
+            background: rgba(13, 14, 18, 0.5);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -209,9 +223,8 @@
             padding: 60px 50px;
             width: 100%;
             max-width: 1060px;
-            /* Alargado estrategicamente para a distribuição do título */
             margin: 0 auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
@@ -224,10 +237,8 @@
             background: linear-gradient(135deg, #fff 65%, #00c6ff);
             -webkit-background-clip: text;
             background-clip: text;
-            /* Adicionada a propriedade padrão para corrigir o Warning */
             -webkit-text-fill-color: transparent;
             width: 100%;
-            /* Permite que o texto use o espaço livre comandado pelo <br> */
             margin-left: auto;
             margin-right: auto;
         }
@@ -319,7 +330,6 @@
         /* 4. Seção Equipe e Ativação Exclusiva de Snap Container */
         .snap-container-wrapper {
             scroll-snap-type: y proximity;
-            /* O ímã age somente neste bloco integrado */
             width: 100%;
         }
 
@@ -624,9 +634,13 @@
 
             .hero {
                 padding: 40px 15px;
-                background-attachment: scroll;
             }
 
+            .hero-parallax-bg {
+                display: none;
+            }
+
+            /* Suaviza carregamento mobile */
             .glass-card {
                 padding: 30px 20px;
             }
@@ -677,23 +691,26 @@
         </div>
     </header>
 
-    <!-- 2. MOLDURA MESTRA DA HERO (HORIZONTALIDADE EXPANDIDA LATERALMENTE) -->
+    <!-- 2. MOLDURA MESTRA DA HERO (COM INVASÃO DE SEÇÃO EXCLUSIVA) -->
     <div class="hero-wrapper">
         <section class="hero">
+            <!-- Nova div flutuante para a imagem sangrar por baixo da Hero -->
+            <div class="hero-parallax-bg"></div>
             <div class="hero-animation-overlay"></div>
+
             <!-- Caixa de Vidro Fosco Ampla -->
             <div class="glass-card">
                 <!-- TÍTULO CORRIGIDO COM QUEBRA EXATA EM ELITE -->
                 <h1>Sua empresa com posicionamento de elite<br><span>e estruturada para vender mais</span></h1>
                 <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
                     Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
-                <a href="#contato" class="btn-cta">Quero um Diagnostic Digital Gratuito</a>
+                <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
             </div>
         </section>
     </div>
 
-    <!-- 3. GRID DE SERVIÇOS NEON -->
-    <section id="servicos">
+    <!-- 3. GRID DE SERVIÇOS NEON (A LOGO DO TOPO SANGRA POR TRÁS DAQUI AGORA) -->
+    <section id="servicos" style="z-index: 5; background-color: transparent;">
         <div class="container">
             <h2 class="section-title">Nossas <span>Especialidades</span> de Entrega</h2>
             <div class="grid-hunter">
@@ -807,7 +824,7 @@
                     <div class="faq-content">
                         Não utilizamos construtores pesados e genéricos do mercado. Nosso código é escrito de forma
                         nativa e enxuta, garantindo carregamento instantâneo no celular, segurança inviolável contra
-                        vírus e stabile total.
+                        vírus e estabilidade total.
                     </div>
                 </details>
                 <details>
