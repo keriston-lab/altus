@@ -1,8 +1,6 @@
 /* Fundações, Reset e Rolagem Livre */
 html {
     scroll-behavior: smooth;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 * {
@@ -16,8 +14,6 @@ body {
     background-color: #050608;
     color: #f3f4f6;
     line-height: 1.6;
-    overflow-x: hidden;
-    max-width: 100%;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -28,16 +24,19 @@ body {
     padding: 0 24px;
 }
 
-/* 1. Header Flutuante Colorido */
+/* 1. Header Flutuante Colorido (Laranja Rosado) */
 header {
     position: sticky;
     top: 0;
-    background-color: rgba(12, 32, 39, 0.92); 
+    /* Degradê de laranja vibrante para rosa profundo */
+    background: linear-gradient(135deg, rgba(255, 106, 0, 0.95) 0%, rgba(238, 9, 121, 0.95) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
     padding: 12px 0;
+    box-shadow: 0 4px 30px rgba(255, 106, 0, 0.25);
+    /* Sombra colorida acompanhando o clima */
 }
 
 header .container {
@@ -61,7 +60,8 @@ header .container {
     background-color: #ffffff;
     border-radius: 8px;
     padding: 5px;
-    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* Sombra escurecida para destacar o fundo branco no laranja */
 }
 
 .logo-box img {
@@ -82,16 +82,20 @@ nav ul {
     align-items: center;
 }
 
+/* Ajuste da cor dos links para leitura sobre fundo colorido */
 nav ul li a {
-    color: #9ca3af;
+    color: rgba(255, 255, 255, 0.85);
+    /* Branco levemente opaco */
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 nav ul li a:hover {
-    color: #00c6ff;
+    color: #ffffff;
+    /* Fica 100% branco luminoso no hover */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .btn-header-whatsapp {
@@ -105,9 +109,16 @@ nav ul li a:hover {
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     transition: all 0.2s ease-in-out;
     margin-left: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-header-whatsapp:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.45);
+    filter: brightness(1.05);
 }
 
 .btn-header-whatsapp:hover {
@@ -156,6 +167,8 @@ section {
     max-width: 100%;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
+    /* A trava isolada fica aqui! */
 }
 
 .hero {
@@ -1021,7 +1034,7 @@ footer {
     }
 
 }@media (max-width: 768px) {
-    header { padding: 8px 0; background-color: rgba(12, 32, 39, 0.96); }
+    header { padding: 8px 0; }
     header .container { flex-direction: row; justify-content: space-between; align-items: center; }
     .logo-box { width: 65px; padding: 4px; }
     nav { display: flex !important; gap: 10px; align-items: center; }
