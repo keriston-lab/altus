@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Altus Soluções Digitais - Sites institucionais, landing pages e presença local de alta performance com custo zero de hospedagem permanente.">
+    <meta name="description"
+        content="Altus Soluções Digitais - Sites institucionais, landing pages e presença local de alta performance para o seu negócio.">
     <title>Altus Soluções Digitais | Performance e Posicionamento Web</title>
-    
+
     <!-- Ícone da Aba (Favicon) -->
     <link rel="icon" type="image/jpeg" href="links/logofavicon.jpg">
 
     <!-- Fonte Premium do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         /* Fundações e Reset */
@@ -28,6 +31,7 @@
             background-color: #0d0e12;
             color: #f3f4f6;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -37,7 +41,7 @@
             padding: 0 24px;
         }
 
-        /* 1. Menu de Topo Flutuante (Sticky Header - Inspirado na Reinvent) */
+        /* 1. Menu de Topo Flutuante (Sticky Header) */
         header {
             position: sticky;
             top: 0;
@@ -86,17 +90,18 @@
             color: #00c6ff;
         }
 
-        /* Seções Gerais (Estilo Respiro da Gaiden) */
+        /* Espaçamento das Seções Reduzido para Manter o Ritmo Visual */
         section {
-            padding: 100px 0;
+            padding: 55px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            position: relative;
         }
 
         .section-title {
             text-align: center;
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 60px;
+            margin-bottom: 45px;
             letter-spacing: -0.5px;
         }
 
@@ -104,11 +109,54 @@
             color: #00c6ff;
         }
 
-        /* 2. Hero Section (Abertura Impactante) */
+        /* 2. Hero Section com Animação de Marca d'Água Fluida por CSS */
         .hero {
             text-align: center;
-            padding: 80px 0 100px 0;
-            border-none: none;
+            padding: 90px 0 110px 0;
+            position: relative;
+        }
+
+        /* Efeitos de Luz em Movimento Suave no Fundo */
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.08;
+            z-index: -1;
+            animation: flutuar 25px infinite alternate ease-in-out;
+        }
+
+        .hero::before {
+            width: 300px;
+            height: 300px;
+            background: #0072ff;
+            top: 10%;
+            left: 20%;
+        }
+
+        .hero::after {
+            width: 250px;
+            height: 250px;
+            background: #00c6ff;
+            bottom: 15%;
+            right: 25%;
+            animation-delay: -5s;
+        }
+
+        @keyframes flutuar {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -20px) scale(1.15);
+            }
+
+            100% {
+                transform: translate(-20px, 40px) scale(0.9);
+            }
         }
 
         h1 {
@@ -148,11 +196,11 @@
             box-shadow: 0 12px 30px rgba(0, 114, 255, 0.45);
         }
 
-        /* 3. Grid Confortável de Serviços (Inspirado na Hunter) */
+        /* 3. Grid Confortável de Serviços */
         .grid-hunter {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            gap: 35px;
         }
 
         .hunter-card {
@@ -187,7 +235,7 @@
             font-size: 0.95rem;
         }
 
-        /* 4. Seção Equipe Humana (Estilo Gaiden - P&B para Colorido) */
+        /* 4. Seção Equipe Humana (P&B para Colorido) */
         .grid-equipe {
             display: flex;
             justify-content: center;
@@ -278,7 +326,7 @@
             color: #6b7280;
         }
 
-        /* 6. Seção FAQ Sanfona (Inspirado na Marangoni) */
+        /* 6. Seção FAQ Sanfona */
         .faq-wrapper {
             max-width: 750px;
             margin: 0 auto;
@@ -331,7 +379,7 @@
             font-size: 0.95rem;
         }
 
-        /* 7. Formulário de Contato Direto (StaticForms) */
+        /* 7. Formulário de Contato Direto */
         .contato-box {
             max-width: 600px;
             margin: 0 auto;
@@ -359,7 +407,8 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input,
+        .form-group textarea {
             padding: 14px;
             background: #0d0e12;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -369,7 +418,8 @@
             transition: border-color 0.2s ease;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #00c6ff;
         }
@@ -404,14 +454,31 @@
 
         /* Responsividade Intermediária */
         @media (max-width: 768px) {
-            header .container { flex-direction: column; gap: 15px; }
-            nav ul { gap: 15px; }
-            h1 { font-size: 2rem; }
-            section { padding: 60px 0; }
-            footer .container { flex-direction: column; text-align: center; }
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 45px 0;
+            }
+
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- 1. HEADER & MENU FLUTUANTE -->
@@ -433,11 +500,12 @@
     </header>
 
     <main class="container">
-        
-        <!-- 2. HERO SECTION -->
+
+        <!-- 2. HERO SECTION COM ANIMAÇÃO NATIVA -->
         <section class="hero">
             <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
-            <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida. Prontos para buscas do Google e com custo zero de hospedagem permanente para sempre.</p>
+            <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
+                Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
             <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
         </section>
 
@@ -448,17 +516,20 @@
                 <div class="hunter-card">
                     <div class="hunter-icon">🌐</div>
                     <h3>Landing Pages & Sites Estáticos</h3>
-                    <p>Páginas de alta conversão construídas puramente em código. Velocidade máxima de carregamento no celular e proteção total contra quedas ou invasões.</p>
+                    <p>Páginas de alta conversão construídas puramente em código. Velocidade máxima de carregamento no
+                        celular e proteção total contra quedas ou invasões.</p>
                 </div>
                 <div class="hunter-card">
                     <div class="hunter-icon">📍</div>
                     <h3>Presença Local Suprema</h3>
-                    <p>Otimização estratégica do Perfil da sua Empresa no Google Maps. Posicionamos seu comércio à frente da concorrência quando os clientes buscarem na região.</p>
+                    <p>Otimização estratégica do Perfil da sua Empresa no Google Maps. Posicionamos seu comércio à
+                        frente da concorrência quando os clientes buscarem na região.</p>
                 </div>
                 <div class="hunter-card">
                     <div class="hunter-icon">🚀</div>
                     <h3>Cartões de Visita Digitais</h3>
-                    <p>Estruturas centralizadas de contato para substituir os links poluídos da bio do seu Instagram, desenhadas especificamente para forçar o clique em direção ao seu WhatsApp.</p>
+                    <p>Estruturas centralizadas de contato para substituir os links poluídos da bio do seu Instagram,
+                        desenhadas especificamente para forçar o clique em direção ao seu WhatsApp.</p>
                 </div>
             </div>
         </section>
@@ -469,7 +540,6 @@
             <div class="grid-equipe">
                 <div class="membro-card">
                     <div class="foto-wrapper">
-                        <!-- Substitua depois por uma foto sua hospedada ou no seu repositório -->
                         <img src="links/logo.png" alt="Keriston Marcelo">
                     </div>
                     <h3>Keriston Marcelo</h3>
@@ -484,7 +554,8 @@
             <div class="grid-depoimentos">
                 <div class="depoimento-card">
                     <div class="estrelas">★★★★★</div>
-                    <p>"A velocidade com que a página abre no celular é impressionante. Meus clientes elogiaram a organização dos botões e o contato ficou muito mais ágil."</p>
+                    <p>"A velocidade com que a página abre no celular é impressionante. Meus clientes elogiaram a
+                        organização dos botões e o contato ficou muito mais ágil."</p>
                     <div class="autor-info">
                         <h4>Mário Silva</h4>
                         <span>Comércio Local</span>
@@ -492,7 +563,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="estrelas">★★★★★</div>
-                    <p>"Paramos de pagar mensalidades caras de hospedagem para agências tradicionais. A Altus entregou o site perfeito e sem surpresas no fim do mês."</p>
+                    <p>"Paramos de pagar taxas abusivas para agências tradicionais de desenvolvimento. A Altus entregou
+                        a plataforma perfeita e o atendimento foi exemplar."</p>
                     <div class="autor-info">
                         <h4>Ana Júlia</h4>
                         <span>Profissional Liberal</span>
@@ -501,21 +573,29 @@
             </div>
         </section>
 
-        <!-- MINI BLOG / COGNITIVO PARA ROBÔS E IAS -->
+        <!-- MINI BLOG / INFORMATIVO PARA BUSCAS E IAS -->
         <section id="informativos">
             <h2 class="section-title">Estratégia e <span>Posicionamento</span></h2>
             <div class="grid-hunter">
                 <div class="hunter-card" style="border-color: rgba(255,255,255,0.02);">
-                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ARTIGO INFORMATIVO</span>
+                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ARTIGO
+                        INFORMATIVO</span>
                     <h3 style="margin: 10px 0;">O risco invisível de estruturar seu negócio em terreno alugado</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Entenda por que depender exclusivamente de redes sociais como o Instagram pode cortar o fluxo de clientes da sua empresa sem aviso prévio.</p>
-                    <a href="#contato" style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais &rarr;</a>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Entenda por que depender exclusivamente de redes
+                        sociais como o Instagram pode cortar o fluxo de clientes da sua empresa sem aviso prévio.</p>
+                    <a href="#contato"
+                        style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
+                        &rarr;</a>
                 </div>
                 <div class="hunter-card" style="border-color: rgba(255,255,255,0.02);">
-                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">GUIA TÉCNICO</span>
+                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">GUIA
+                        TÉCNICO</span>
                     <h3 style="margin: 10px 0;">Como as novas Inteligências Artificiais recomendam empresas locais?</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Os critérios ocultos que ferramentas de busca por IA e robôs de geolocalização avaliam no código de um site antes de sugerirem seu serviço.</p>
-                    <a href="#contato" style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais &rarr;</a>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Os critérios ocultos que ferramentas de busca por
+                        IA e robôs de geolocalização avaliam no código de um site antes de sugerirem seu serviço.</p>
+                    <a href="#contato"
+                        style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
+                        &rarr;</a>
                 </div>
             </div>
         </section>
@@ -525,21 +605,27 @@
             <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
             <div class="faq-wrapper">
                 <details>
-                    <summary>O que significa custo zero de hospedagem permanente?</summary>
+                    <summary>Qual o diferencial da estrutura da Altus?</summary>
                     <div class="faq-content">
-                        Significa que construímos seu site em uma arquitetura limpa e estática, hospedada em servidores globais de alta performance que não cobram mensalidades. Você paga apenas pelo desenvolvimento do projeto, sem surpresas mensais.
+                        Não utilizamos construtores pesados e genéricos do mercado. Nosso código é escrito de forma
+                        nativa e enxuta, garantindo carregamento instantâneo no celular, segurança inviolável contra
+                        vírus e estabilidade total.
                     </div>
                 </details>
                 <details>
                     <summary>Como o site me ajuda a aparecer no Google e nas IAs?</summary>
                     <div class="faq-content">
-                        Não utilizamos construtores pesados e genéricos. Nosso código é estruturado semanticamente para que os robôs de IA (como ChatGPT e Gemini) e o algoritmo do Google consigam ler, catalogar e recomendar sua empresa com prioridade.
+                        Nossos projetos são estruturados semanticamente. Isso significa que organizamos as tags internas
+                        de forma otimizada para que os robôs de inteligência artificial (como ChatGPT e Gemini) e o
+                        algoritmo do Google cataloguem e recomendem sua empresa com prioridade regional.
                     </div>
                 </details>
                 <details>
                     <summary>Eu poderei atualizar os links do meu cartão digital depois?</summary>
                     <div class="faq-content">
-                        Sim. Toda a estrutura é entregue de forma organizada e fornecemos o suporte básico para que alterações simples de contatos, links ou redes sociais sejam feitas de forma ágil sempre que seu negócio expandir.
+                        Sim. Toda a estrutura é entregue de forma organizada e fornecemos o suporte básico necessário
+                        para que alterações simples de contatos, links ou redes sociais sejam feitas de forma ágil
+                        sempre que seu negócio expandir.
                     </div>
                 </details>
             </div>
@@ -550,7 +636,6 @@
             <h2 class="section-title">Agende um <span>Diagnóstico Gratuito</span></h2>
             <div class="contato-box">
                 <form action="https://api.staticforms.xyz/submit" method="post">
-                    <!-- Chave de API do StaticForms (Pegue grátis no site deles depois) -->
                     <input type="hidden" name="accessKey" value="SUA_CHAVE_AQUI">
                     <input type="hidden" name="redirectTo" value="https://keriston-lab.github.io/testecartaodevisita/">
 
@@ -566,10 +651,12 @@
 
                     <div class="form-group">
                         <label>Qual a principal meta ou gargalo digital do seu negócio hoje?</label>
-                        <textarea name="message" rows="4" required placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
+                        <textarea name="message" rows="4" required
+                            placeholder="Conte brevemente o que sua empresa precisa resolver..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar Dados e Solicitar Análise</button>
+                    <button type="submit" class="btn-cta" style="border: none; cursor: pointer; width: 100%;">Enviar
+                        Dados e Solicitar Análise</button>
                 </form>
             </div>
         </section>
@@ -581,7 +668,8 @@
         <div class="container">
             <div>
                 <p>&copy; 2026 Altus Soluções Digitais. Todos os direitos reservados.</p>
-                <p style="font-size: 0.75rem; margin-top: 4px; color: #374151;">Infraestrutura estática de alta performance.</p>
+                <p style="font-size: 0.75rem; margin-top: 4px; color: #374151;">Infraestrutura e posicionamento web de
+                    alta performance.</p>
             </div>
             <div class="powered-by">
                 <p>powered by <a href="links/index.html">altus</a></p>
@@ -590,4 +678,5 @@
     </footer>
 
 </body>
+
 </html>
