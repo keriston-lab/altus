@@ -208,7 +208,7 @@
             background: linear-gradient(135deg, #fff 65%, #00c6ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            max-width: 760px; /* Trava a largura da caixa do título para ditar a quebra ideal */
+            width: 100%; /* Permite que o texto use o espaço livre comandado pelo <br> */
             margin-left: auto;
             margin-right: auto;
         }
@@ -664,7 +664,8 @@
             <div class="hero-animation-overlay"></div>
             <!-- Caixa de Vidro Fosco Ampla -->
             <div class="glass-card">
-                <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
+                <!-- TÍTULO CORRIGIDO COM QUEBRA EXATA EM ELITE -->
+                <h1>Sua empresa com posicionamento de elite<br><span>e estruturada para vender mais</span></h1>
                 <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
                     Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
                 <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
