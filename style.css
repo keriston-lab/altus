@@ -115,11 +115,10 @@ nav ul li a:hover {
 
 /* Configuração de Seções Gerais */
 section {
-    padding: 45px 0;
+    padding: 55px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
     position: relative;
-    display: flex;
-    align-items: center;
+    display: block; /* Remove o bloqueio de colunas */
     width: 100%;
     scroll-margin-top: 90px;
 }
@@ -911,6 +910,112 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        padding: 8px 0;
+        background-color: rgba(12, 32, 39, 0.96);
+    }
+
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-box {
+        width: 60px;
+        padding: 4px;
+    }
+
+    /* ESCONDE OS LINKS EM TEXTO PARA LIMPAR O CABEÇALHO NO CELULAR E FORÇAR A CONVERSÃO */
+    nav ul {
+        display: none;
+    }
+
+    nav {
+        display: flex !important;
+        align-items: center;
+    }
+
+    .btn-header-whatsapp {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    /* AJUSTE DAS FONTES QUE ESTAVAM TRANSBORDANDO A TELA */
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 35px;
+    }
+
+    .contato-copy h2 {
+        font-size: 1.9rem;
+    }
+
+    .hero-wrapper {
+        padding: 15px 10px;
+    }
+
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero-parallax-bg {
+        display: block !important;
+        width: 160vw;
+        height: 120%;
+        background-position: center 20%;
+        background-size: contain;
+    }
+
+    .glass-card {
+        padding: 30px 20px;
+    }
+
+    section {
+        padding: 45px 0;
+        scroll-margin-top: 110px;
+    }
+
+    .floating-actions-container {
+        bottom: 20px !important;
+        right: 20px !important;
+    }
+
+    .brand-ticker-section {
+        padding: 25px 0;
+    }
+
+    .ticker-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .ticker-title {
+        padding-right: 0;
+        min-width: 100%;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-card {
+        padding: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+}@media (max-width: 768px) {
     header { padding: 8px 0; background-color: rgba(12, 32, 39, 0.96); }
     header .container { flex-direction: row; justify-content: space-between; align-items: center; }
     .logo-box { width: 65px; padding: 4px; }
