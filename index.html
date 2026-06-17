@@ -223,8 +223,9 @@
             }
 
             100% {
-                transform: scale(1.08) translate(15px, -15px); /* Ponto e vírgula aqui */
-                filter: hue-rotate(10deg); /* Propriedade isolada na linha de baixo */
+                transform: scale(1.08) translate(15px, -15px);
+                filter: hue-rotate(10deg);
+                /* Preservado conforme solicitado */
             }
         }
 
@@ -292,13 +293,16 @@
         @keyframes pulse-glow {
             0% {
                 box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.5);
+                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.5);
             }
 
             70% {
                 box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
+                box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
             }
 
             100% {
+                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0);
                 box-shadow: 0 0 0 0 rgba(0, 114, 255, 0);
             }
         }
@@ -403,6 +407,109 @@
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* NOVO: Engenharia da Esteira de Rolagem Infinita e Jateamento de Bordas (Estilo Hub) */
+        .brand-ticker-section {
+            background: rgba(255, 255, 255, 0.01);
+            overflow: hidden;
+            padding: 35px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ticker-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .ticker-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            min-width: 260px;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            z-index: 5;
+            background: #050608;
+            /* Cobre o fundo para manter fixo à esquerda */
+            padding-right: 20px;
+        }
+
+        /* Máscara de Transição de Opacidade das Laterais */
+        .ticker-track-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            display: flex;
+            /* Máscara jateada que clareia e escurece os logos nas pontas */
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            width: max-content;
+            animation: travelTicker 30s linear infinite;
+            /* Movimento automático suave e contínuo */
+        }
+
+        /* Interrompe a rolagem ao passar o mouse para leitura detalhada */
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.35;
+            /* Começa escurecido sutil */
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .ticker-item svg {
+            fill: #9ca3af;
+            width: 22px;
+            height: 22px;
+            transition: all 0.3s ease;
+        }
+
+        /* Clareia o item acendendo a marca no foco do mouse */
+        .ticker-item:hover {
+            opacity: 0.95;
+            color: #00c6ff;
+        }
+
+        .ticker-item:hover svg {
+            fill: #00c6ff;
+            transform: scale(1.08);
+        }
+
+        /* Mecânica de Loop Infinito Perfeito */
+        @keyframes travelTicker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* Rola até a metade idêntica e reseta invisivelmente */
         }
 
         /* 5. Depoimentos */
@@ -649,7 +756,6 @@
                 padding: 4px;
             }
 
-            /* Ajuste de agrupamento para o botão e menu caberem lado a lado no mobile */
             nav {
                 display: flex !important;
                 gap: 10px;
@@ -707,6 +813,21 @@
                 bottom: 20px !important;
                 right: 20px !important;
             }
+
+            .brand-ticker-section {
+                padding: 25px 0;
+            }
+
+            .ticker-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .ticker-title {
+                padding-right: 0;
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -725,7 +846,7 @@
         </a>
     </div>
 
-    <!-- 1. HEADER (COM BOTÃO DO WHATSAPP REINTEGRADO AO CANTO SUPERIOR DIREITO) -->
+    <!-- 1. HEADER -->
     <header>
         <div class="container">
             <a href="#" class="logo-link">
@@ -740,7 +861,6 @@
                     <li><a href="#equipe">A Altus</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
-                <!-- O botão restabelecido de forma limpa dentro do fluxo da barra -->
                 <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20gostaria%20de%20conversar%20sobre%20um%20projeto."
                     target="_blank" class="btn-header-whatsapp">WhatsApp</a>
             </nav>
@@ -808,7 +928,64 @@
             </div>
         </section>
 
-        <!-- 5. DEPOIMENTOS -->
+        <!-- NOVO: ESTEIRA DE ROLAGEM INFINITA AUTOMATIZADA COM MARCAS VITRINE (ESTILO HUB) -->
+        <section id="parceiros" class="brand-ticker-section snap-section-target">
+            <div class="container">
+                <div class="ticker-container">
+                    <div class="ticker-title">
+                        Empresas que confiam no nosso trabalho
+                    </div>
+                    <div class="ticker-track-wrapper">
+                        <!-- O trilho possui duas sequências idênticas (Original + Espelho) para o loop ser eterno e fluido -->
+                        <div class="ticker-track">
+
+                            <!-- Bloco Original (Apenas altere os textos/ícones no futuro por tags <img>) -->
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 22h20L12 2z" />
+                                </svg>Focalizze</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                </svg>Grupo Mogi</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>Hygéia Clínica</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z" />
+                                </svg>Illo Conforto</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
+                                </svg>Jukadani Bar</div>
+
+                            <!-- Bloco Gêmeo Espelho (Garante a continuidade infinita do movimento) -->
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 22h20L12 2z" />
+                                </svg>Focalizze</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                </svg>Grupo Mogi</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>Hygéia Clínica</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z" />
+                                </svg>Illo Conforto</div>
+                            <div class="ticker-item"><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
+                                </svg>Jukadani Bar</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DEPOIMENTOS (O QUE DIZEM NOSSOS PARCEIROS) -->
         <section id="depoimentos" class="snap-section-target">
             <div class="container">
                 <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
