@@ -14,21 +14,25 @@
     <!-- Fonte Premium do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2=family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <style>
-        /* Fundações e Reset */
+        /* Fundações, Reset e Mecânica de Rolagem por Seção (Scroll Snapping) */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0d0e12;
+            background-color: #050608;
             color: #f3f4f6;
             line-height: 1.6;
             overflow-x: hidden;
@@ -41,14 +45,14 @@
             padding: 0 24px;
         }
 
-        /* 1. Header Flutuante Estilo Hub (Sticky Menu com Botão de Conversão) */
+        /* 1. Header Flutuante */
         header {
             position: sticky;
             top: 0;
-            background-color: rgba(13, 14, 18, 0.85);
+            background-color: rgba(5, 6, 8, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
             z-index: 1000;
             padding: 12px 0;
         }
@@ -59,7 +63,6 @@
             align-items: center;
         }
 
-        /* Logo Reduzido no Topo e Linkável */
         .logo-link {
             text-decoration: none;
             display: block;
@@ -72,7 +75,6 @@
 
         .logo-box {
             width: 75px;
-            /* Tamanho reduzido conforme solicitado */
             background-color: #ffffff;
             border-radius: 8px;
             padding: 5px;
@@ -108,38 +110,26 @@
             color: #00c6ff;
         }
 
-        /* Botão WhatsApp de Canto Direito (Menu) */
-        .btn-nav-whatsapp {
-            background: linear-gradient(135deg, #0072ff, #00c6ff);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: pulse-glow 3s infinite;
-        }
-
-        .btn-nav-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
-        }
-
-        /* Espaçamento de Seções Compacto (Pistas Visuais) */
+        /* Configuração de Travamento de Seção Obrigatório */
         section {
-            padding: 55px 0;
+            padding: 65px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
             position: relative;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            scroll-snap-align: start;
+            /* Força o alinhamento perfeito no topo de cada seção */
+            scroll-snap-stop: always;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 45px;
             letter-spacing: -0.5px;
+            width: 100%;
         }
 
         .section-title span {
@@ -147,59 +137,50 @@
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* 2. Hero Section com Névoas Fluidas Visíveis */
+        /* 2. Efeito Parallax Estático + Movimento Abstrato Contínuo (Estilo Hub) */
         .hero {
             text-align: center;
-            padding: 95px 0 115px 0;
-            position: relative;
             border: none;
+            background-attachment: fixed;
+            /* Efeito estático do terceiro print */
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.9), rgba(13, 14, 18, 0.85)), url('links/logosemfundo.png');
         }
 
-        .hero::before,
-        .hero::after {
-            content: '';
+        /* Grid de partículas em movimento contínuo por CSS puro */
+        .hero-animation-overlay {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.22;
-            /* Visibilidade ajustada para vencer o fundo escuro */
-            z-index: -1;
-            animation: flutuar 20px infinite alternate ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 114, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 198, 255, 0.15) 0%, transparent 45%);
+            z-index: 1;
+            animation: backgroundShift 15px linear infinite alternate;
         }
 
-        .hero::before {
-            width: 300px;
-            height: 300px;
-            background: #0072ff;
-            top: 5%;
-            left: 15%;
-        }
-
-        .hero::after {
-            width: 250px;
-            height: 250px;
-            background: #00c6ff;
-            bottom: 10%;
-            right: 15%;
-            animation-delay: -4s;
-        }
-
-        @keyframes flutuar {
+        @keyframes backgroundShift {
             0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(40px, -30px) scale(1.2);
+                transform: scale(1) translate(0, 0);
+                filter: hue-rotate(0deg);
             }
 
             100% {
-                transform: translate(-30px, 30px) scale(0.85);
+                transform: scale(1.1) translate(20px, -20px) filter: hue-rotate(15deg);
             }
         }
 
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
         h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -1px;
@@ -210,7 +191,7 @@
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #9ca3af;
             max-width: 750px;
             margin: 0 auto 40px auto;
@@ -238,11 +219,11 @@
 
         @keyframes pulse-glow {
             0% {
-                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.4);
+                box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.5);
             }
 
             70% {
-                box-shadow: 0 0 0 12px rgba(0, 114, 255, 0);
+                box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
             }
 
             100% {
@@ -250,20 +231,20 @@
             }
         }
 
-        /* 3. Grid de Serviços Estilo Hub (Glow Neon Borders) */
+        /* 3. Grid de Serviços Estilo Hub Neon */
         .grid-hunter {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 35px;
+            width: 100%;
         }
 
         .hunter-card {
-            background: rgba(13, 14, 18, 0.6);
+            background: rgba(13, 14, 18, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 35px;
             border-radius: 16px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
         }
 
         .hunter-card:hover {
@@ -291,12 +272,13 @@
             font-size: 0.95rem;
         }
 
-        /* 4. Seção Equipe Humana (P&B para Colorido) */
+        /* 4. Seção Equipe */
         .grid-equipe {
             display: flex;
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .membro-card {
@@ -346,15 +328,16 @@
             letter-spacing: 0.5px;
         }
 
-        /* 5. Seção de Depoimentos e Avaliações Neon */
+        /* 5. Depoimentos */
         .grid-depoimentos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            width: 100%;
         }
 
         .depoimento-card {
-            background: rgba(13, 14, 18, 0.6);
+            background: rgba(13, 14, 18, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 30px;
             border-radius: 16px;
@@ -379,23 +362,14 @@
             margin-bottom: 20px;
         }
 
-        .autor-info h4 {
-            font-size: 1rem;
-            color: #fff;
-        }
-
-        .autor-info span {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        /* 6. Seção FAQ Sanfona */
+        /* 6. FAQ */
         .faq-wrapper {
             max-width: 750px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            width: 100%;
         }
 
         details {
@@ -424,7 +398,6 @@
             content: '＋';
             color: #00c6ff;
             font-size: 1.1rem;
-            transition: transform 0.2s ease;
         }
 
         details[open] {
@@ -442,20 +415,15 @@
             font-size: 0.95rem;
         }
 
-        /* 7. Formulário de Contato Direto */
+        /* 7. Formulário */
         .contato-box {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(13, 14, 18, 0.6);
+            background: rgba(13, 14, 18, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 40px;
             border-radius: 20px;
-            transition: border-color 0.3s ease;
-        }
-
-        .contato-box:hover {
-            border-color: #00c6ff;
-            box-shadow: 0 0 30px rgba(0, 198, 255, 0.1);
+            width: 100%;
         }
 
         form {
@@ -473,51 +441,96 @@
         .form-group label {
             font-size: 0.85rem;
             color: #9ca3af;
-            font-weight: 500;
         }
 
         .form-group input,
         .form-group textarea {
             padding: 14px;
-            background: #0d0e12;
+            background: #050608;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             color: #fff;
-            font-size: 0.95rem;
-            transition: border-color 0.2s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
+        /* 8. Botões Globais Fixos Flutuantes (Sobrepostos no Canto Direito) */
+        .floating-actions-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+            /* Garante sobreposição absoluta sobre todo o conteúdo */
+        }
+
+        .action-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .action-circle:hover {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        /* Botão do WhatsApp Estilo Hub */
+        .btn-float-whatsapp {
+            background-color: #25d366;
+        }
+
+        .btn-float-whatsapp svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+
+        /* Botão de Topo Dinâmico */
+        .btn-float-top {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #00c6ff;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .btn-float-top:hover {
+            background-color: #00c6ff;
+            color: #fff;
             border-color: #00c6ff;
         }
 
-        /* Rodapé com Alinhamento e Simetria Cirúrgica */
+        /* Rodapé com Alinhamento Cirúrgico */
         footer {
             padding: 40px 0;
-            background: #050608;
+            background: #020304;
             border-top: 1px solid rgba(255, 255, 255, 0.01);
             font-size: 0.8rem;
             color: #4b5563;
+            scroll-snap-align: end;
         }
 
         .footer-grid {
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Centralização Absoluta */
             gap: 24px;
             text-align: center;
         }
 
-        /* Logo do Rodapé Forçado no Mesmo Tamanho Exato do Topo */
         .footer-logo {
             width: 75px;
             background-color: #ffffff;
             border-radius: 8px;
             padding: 5px;
-            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.05);
         }
 
         .footer-logo img {
@@ -525,45 +538,39 @@
             display: block;
         }
 
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
         .powered-by a {
             color: #6b7280;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.2s;
         }
 
         .powered-by a:hover {
             color: #00c6ff;
         }
 
-        /* Responsividade Intermediária */
         @media (max-width: 768px) {
+            html {
+                scroll-snap-type: none;
+            }
+
+            /* Desativa snapping no celular para evitar travamento de telas menores */
             header .container {
                 flex-direction: column;
                 gap: 15px;
             }
 
             nav {
-                flex-direction: column;
-                gap: 15px;
+                display: none;
             }
 
-            nav ul {
-                gap: 15px;
-            }
-
+            /* Limpa o menu no mobile para focar no CTA flutuante */
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             section {
-                padding: 45px 0;
+                min-height: auto;
+                padding: 60px 0;
             }
         }
     </style>
@@ -571,10 +578,24 @@
 
 <body>
 
-    <!-- 1. HEADER & MENU FLUTUANTE ESTILO HUB -->
+    <!-- CONTAINER DOS BOTÕES FLUTUANTES SOBREPOSTOS NO CANTO -->
+    <div class="floating-actions-container">
+        <!-- Voltar ao Topo -->
+        <a href="#" class="action-circle btn-float-top" title="Voltar ao Topo">&uarr;</a>
+
+        <!-- WhatsApp Fixo -->
+        <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20gostaria%20de%20um%20diagnostico%20digital%20gratuito."
+            target="_blank" class="action-circle btn-float-whatsapp" title="Falar no WhatsApp">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.292 1.482 4.697 1.484 5.429 0 9.843-4.388 9.846-9.77.003-2.607-1.012-5.059-2.859-6.908C16.436 2.111 13.993.945 11.4.945 5.976.945 1.56 5.334 1.557 10.715c-.001 1.558.423 3.082 1.226 4.4l-.382 1.396-.328 1.198 1.229-.32 1.488-.389zm13.111-6.197c-.29-.145-1.714-.846-1.979-.942-.266-.096-.459-.145-.653.146-.193.29-.748.942-.917 1.134-.169.192-.338.217-.628.072-2.935-1.463-4.317-2.522-5.462-4.485-.302-.518.302-.481.864-1.603.097-.192.048-.361-.024-.505-.072-.145-.653-1.571-.895-2.152-.236-.569-.475-.492-.653-.502-.17-.008-.363-.01-.557-.01-.193 0-.507.072-.772.361-.266.29-1.014.992-1.014 2.42 0 1.427 1.039 2.808 1.184 3.001.145.193 2.043 3.12 4.949 4.373.692.298 1.232.476 1.654.61.695.221 1.328.19 1.828.115.557-.084 1.714-.7 1.956-1.374.242-.675.242-1.253.169-1.374-.073-.121-.266-.192-.556-.338z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- 1. HEADER -->
     <header>
         <div class="container">
-            <!-- Ao clicar na logo, retorna para a página inicial no topo (#) -->
             <a href="#" class="logo-link">
                 <div class="logo-box">
                     <img src="links/logo.png" alt="Altus Soluções Digitais">
@@ -586,26 +607,26 @@
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#equipe">A Altus</a></li>
                     <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
-                <!-- Botão de Conversão Direta no Menu Superior -->
-                <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20diagnostico."
-                    target="_blank" class="btn-nav-whatsapp">Conversar no WhatsApp</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-
-        <!-- 2. HERO SECTION COM ANIMAÇÃO NATIVA AUMENTADA -->
-        <section class="hero">
+    <!-- 2. HERO SECTION COM PARALLAX ESTÁTICO + ANIMAÇÃO DE NEON -->
+    <section class="hero">
+        <div class="hero-animation-overlay"></div>
+        <div class="container">
             <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
             <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
                 Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
             <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
-        </section>
+        </div>
+    </section>
 
-        <!-- 3. GRID DE SERVIÇOS (GLOW NEON) -->
-        <section id="servicos">
+    <!-- 3. GRID DE SERVIÇOS NEON -->
+    <section id="servicos">
+        <div class="container">
             <h2 class="section-title">Nossas <span>Especialidades</span> de Entrega</h2>
             <div class="grid-hunter">
                 <div class="hunter-card">
@@ -627,10 +648,12 @@
                         desenhadas especificamente para forçar o clique em direção ao seu WhatsApp.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 4. EQUIPE E COLABORADORES -->
-        <section id="equipe">
+    <!-- 4. EQUIPE E COLABORADORES -->
+    <section id="equipe">
+        <div class="container">
             <h2 class="section-title">Quem Executa a sua <span>Estratégia</span></h2>
             <div class="grid-equipe">
                 <div class="membro-card">
@@ -641,10 +664,12 @@
                     <p>Estrategista de Performance Web</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 5. DEPOIMENTOS E PROVA SOCIAL -->
-        <section id="depoimentos">
+    <!-- 5. DEPOIMENTOS -->
+    <section id="depoimentos">
+        <div class="container">
             <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
             <div class="grid-depoimentos">
                 <div class="depoimento-card">
@@ -666,10 +691,12 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- MINI BLOG / INFORMATIVO PARA BUSCAS E IAS -->
-        <section id="informativos">
+    <!-- MINI BLOG / INFORMATIVO -->
+    <section id="informativos">
+        <div class="container">
             <h2 class="section-title">Estratégia e <span>Posicionamento</span></h2>
             <div class="grid-hunter">
                 <div class="hunter-card" style="border-color: rgba(255,255,255,0.02);">
@@ -693,10 +720,12 @@
                         &rarr;</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 6. FAQ (PERGUNTAS FREQUENTES SANFONA) -->
-        <section id="faq">
+    <!-- 6. FAQ SANFONA -->
+    <section id="faq">
+        <div class="container">
             <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
             <div class="faq-wrapper">
                 <details>
@@ -724,10 +753,12 @@
                     </div>
                 </details>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 7. FORMULÁRIO DE CAPTURA DIRETO NO E-MAIL -->
-        <section id="contato">
+    <!-- 7. FORMULÁRIO DE CONTATO -->
+    <section id="contato">
+        <div class="container">
             <h2 class="section-title">Agende um <span>Diagnóstico Gratuito</span></h2>
             <div class="contato-box">
                 <form action="https://api.staticforms.xyz/submit" method="post">
@@ -754,15 +785,13 @@
                         Dados e Solicitar Análise</button>
                 </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
-
-    <!-- RODAPÉ SYMETRICO E CENTRALIZADO -->
+    <!-- RODAPÉ SÉMETRICO CENTRALIZADO -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <!-- Logo Centralizada do Mesmo Tamanho Exato do Topo -->
                 <div class="footer-logo">
                     <img src="links/logo.png" alt="Altus Soluções Digitais">
                 </div>
