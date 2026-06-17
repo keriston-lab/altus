@@ -18,9 +18,9 @@
         rel="stylesheet">
 
     <style>
-        /* Fundações, Reset e Mecânica de Rolagem por Seção (Scroll Snapping) */
+       /* Fundações, Reset e Mecânica de Rolagem Suavizada (Estilo Hub Proximity) */
         html {
-            scroll-snap-type: y mandatory;
+            scroll-snap-type: y proximity; /* Mudado de mandatory para proximity: muito mais suave e livre */
             scroll-behavior: smooth;
         }
 
@@ -36,6 +36,7 @@
             color: #f3f4f6;
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -110,7 +111,7 @@
             color: #00c6ff;
         }
 
-        /* Configuração de Travamento de Seção Obrigatório */
+        /* Configuração de Alinhamento Amortecido de Seção */
         section {
             padding: 65px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
@@ -118,9 +119,7 @@
             min-height: calc(100vh - 70px);
             display: flex;
             align-items: center;
-            scroll-snap-align: start;
-            /* Força o alinhamento perfeito no topo de cada seção */
-            scroll-snap-stop: always;
+            scroll-snap-align: start; /* O ímã age suavemente aqui */
         }
 
         .section-title {
