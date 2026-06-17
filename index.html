@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Altus Soluções Digitais - Desenvolvemos sites institucionais, landing pages e cartões digitais de alta performance com custo zero de hospedagem.">
+    <title>Altus Soluções Digitais | Posicionamento e Performance Web</title>
+    
+    <!-- Ícone da Aba (Favicon) -->
+    <link rel="icon" type="image/jpeg" href="links/logofavicon.jpg">
+
+    <!-- Fonte Premium do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d0e12;
+            color: #f3f4f6;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Logo */
+        header {
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-box {
+            width: 130px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 8px 24px rgba(0, 114, 255, 0.15);
+        }
+
+        .logo-box img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Seção 1: Hero */
+        .hero {
+            padding: 60px 0 80px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 60%, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+
+        /* Botão Global Premium */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 18px 36px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 114, 255, 0.5);
+        }
+
+        /* Seção Geral Layout */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            color: #00c6ff;
+        }
+
+        /* Seção 2: Grid de Dores */
+        .grid-dores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .dor-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .dor-card:hover {
+            border-color: rgba(0, 198, 255, 0.2);
+        }
+
+        .dor-card h3 {
+            font-size: 1.2rem;
+            color: #00c6ff;
+            margin-bottom: 15px;
+        }
+
+        .dor-card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        /* Seção 3: Grid de Produtos / Preços */
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .produto-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .produto-card.featured {
+            border-color: #0072ff;
+            background: linear-gradient(180deg, rgba(0, 114, 255, 0.05) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .badge-featured {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0072ff;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .produto-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .produto-card .entrega {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .produto-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .produto-card ul li {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: #d1d5db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-select {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .produto-card.featured .btn-select {
+            background: #0072ff;
+            border: none;
+        }
+
+        .btn-select:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .produto-card.featured .btn-select:hover {
+            background: #00c6ff;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+        }
+
+        /* Seção 5: Footer CTA */
+        .footer-cta {
+            text-align: center;
+            background: linear-gradient(180deg, #0d0e12 0%, #050608 100%);
+        }
+
+        .footer-cta p {
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4b5563;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <!-- Aponta para a imagem salva na pasta links onde está seu cartão -->
+            <img src="links/logo.png" alt="Altus Soluções Digitais">
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Seção 1: Hero -->
+        <section class="hero" style="border: none;">
+            <h1>Sua empresa com posicionamento de elite e estruturada para vender mais</h1>
+            <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais sob medida. Alta performance para celular, prontos para buscas do Google e com custo zero de hospedagem para sempre.</p>
+            <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Quero%20um%20diagnostico%20digital%20gratuito" target="_blank" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
+        </section>
+
+        <!-- Seção 2: As Dores Invisíveis -->
+        <section id="diagnostico">
+            <h2 class="section-title">Onde sua empresa está <span>perdendo espaço</span> na cidade?</h2>
+            <div class="grid-dores">
+                <div class="dor-card">
+                    <h3>O Risco das Redes Sociais</h3>
+                    <p>Contas do Instagram podem ser hackeadas, bloqueadas ou perder o alcance de um dia para o outro. Quem não possui uma estrutura própria e independente fica refém de algoritmos terceiros.</p>
+                </div>
+                <div class="dor-card">
+                    <h3>O Fantasma das Mensalidades</h3>
+                    <p>Agências tradicionais cobram taxas mensais abusivas para manter o seu site no ar. Criamos plataformas otimizadas que eliminam o custo fixo de servidores. Você só paga pelo desenvolvimento.</p>
+                </div>
+                <div class="dor-card">
+                    <h3>Invisibilidade em Buscas</h3>
+                    <p>Quando um cliente busca pelo seu serviço no Google Maps ou em ferramentas de Inteligência Artificial e encontra o concorrente, você perde a venda pela falta de um código semanticamente estruturado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Soluções e Pacotes -->
+        <section id="servicos">
+            <h2 class="section-title">Soluções planejadas para o seu <span>momento de negócio</span></h2>
+            <div class="grid-produtos">
+                
+                <!-- Produto 1 -->
+                <div class="produto-card">
+                    <div>
+                        <h3>Cartão Digital Elite</h3>
+                        <p class="entrega">Página única ultra-rápida</p>
+                        <ul>
+                            <li>🔹 Design focado em celulares</li>
+                            <li>🔹 Substituição do Linktree tradicional</li>
+                            <li>🔹 Centralização de contatos diretos</li>
+                            <li>🔹 Domínio personalizado corporativo</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Quero%20saber%20mais%20sobre%20o%20Cartao%20Digital" target="_blank" class="btn-select">Consultar Projeto</a>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="produto-card featured">
+                    <div class="badge-featured">Mais Procurado</div>
+                    <div>
+                        <h3>Presença Local Suprema</h3>
+                        <p class="entrega">Cartão Digital + Google Maps</p>
+                        <ul>
+                            <li>🔹 Tudo o que está incluso no Pacote 1</li>
+                            <li>🔹 Configuração do Perfil do Google</li>
+                            <li>🔹 Otimização de busca por região</li>
+                            <li>🔹 Link estratégico para avaliações</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Quero%20saber%20mais%20sobre%20a%20Presenca%20Local%20Suprema" target="_blank" class="btn-select">Consultar Projeto</a>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="produto-card">
+                    <div>
+                        <h3>Landing Page Estruturada</h3>
+                        <p class="entrega">Plataforma Completa de Conversão</p>
+                        <ul>
+                            <li>🔹 Site completo de alta conversão</li>
+                            <li>🔹 Código otimizado para Google e IAs</li>
+                            <li>🔹 Hospedagem gratuita permanente</li>
+                            <li>🔹 Imune a invasões ou quedas</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Quero%20saber%20mais%20sobre%20a%20Landing%20Page%20Estruturada" target="_blank" class="btn-select">Consultar Projeto</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção 5: CTA Final -->
+        <section class="footer-cta">
+            <h2 class="section-title">Pronto para dar o <span>próximo passo</span>?</h2>
+            <p>Não sabe exatamente qual a estrutura ideal para a sua empresa hoje? Vamos realizar uma análise detalhada dos canais digitais do seu negócio sem qualquer custo.</p>
+            <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Quero%20agendar%20minha%20analise%20gratuita" target="_blank" class="btn-cta">Falar com um Consultor Altus</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Altus Soluções Digitais. Todos os direitos reservados.</p>
+            <p>Hospedagem de Performance e Alta Disponibilidade com Custo Zero de Infraestrutura.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
