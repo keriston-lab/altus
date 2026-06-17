@@ -90,13 +90,14 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 25px;
+            align-items: center;
         }
 
         nav ul li a {
@@ -111,6 +112,29 @@
             color: #00c6ff;
         }
 
+        /* Botão do WhatsApp Integrado no Canto Superior Direito da Barra */
+        .btn-header-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff !important;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            transition: all 0.2s ease-in-out;
+            margin-left: 5px;
+        }
+
+        .btn-header-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.35);
+            filter: brightness(1.05);
+        }
+
         /* Configuração de Seções Gerais - Correção do título oculto atrás do menu */
         section {
             padding: 45px 0;
@@ -120,7 +144,6 @@
             align-items: center;
             width: 100%;
             scroll-margin-top: 90px;
-            /* Alinha a seção perfeitamente abaixo da barra superior */
         }
 
         /* Container de Snapping focado unicamente entre a Equipe e Depoimentos */
@@ -142,7 +165,7 @@
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
 
-        /* 2. Hero Section: Expansão Horizontal e Liberação de Transbordo */
+        /* 2. Hero Section: Expansão Horizontal Máxima com Moldura Arredondada */
         .hero-wrapper {
             padding: 20px 12px;
             width: 100%;
@@ -155,7 +178,6 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 24px;
             position: relative;
-            /* REMOVIDO OVERFLOW HIDDEN PARA PERMITIR QUE A IMAGEM SANGRE PARA A PRÓXIMA SEÇÃO */
             background-color: rgba(5, 6, 8, 0.45);
             padding: 110px 24px;
             display: flex;
@@ -164,27 +186,21 @@
             width: 100%;
         }
 
-        /* CAMADA PARALLAX */
+        /* Camada de fundo controlada */
         .hero-parallax-bg {
             position: absolute;
             top: -40px;
-            /* Começa ligeiramente mais alta para dar curso de movimento */
             left: 50%;
             transform: translateX(-50%);
             width: 100vw;
             height: 140%;
-            /* Altura estendida para garantir o sangramento contínuo */
             background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.1), rgba(5, 6, 8, 0.92)), url('links/logosemfundo.png');
-
-            /* AQUI ESTÁ O SEGREDO: REMOVIDO O FIXED. O FUNDO AGORA DESLIZA SUAVE COM O SEU DEDO */
             background-attachment: scroll;
             background-position: center top;
             background-size: 85%;
             background-repeat: no-repeat;
             z-index: 0;
             pointer-events: none;
-
-            /* Cria uma transição amortecida para quando o scroll snapping for acionado */
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -207,10 +223,8 @@
             }
 
             100% {
-                transform: scale(1.08) translate(15px, -15px);
-                /* Ponto e vírgula aqui */
-                filter: hue-rotate(10deg);
-                /* Propriedade isolada na linha de baixo */
+                transform: scale(1.08) translate(15px, -15px); /* Ponto e vírgula aqui */
+                filter: hue-rotate(10deg); /* Propriedade isolada na linha de baixo */
             }
         }
 
@@ -527,13 +541,13 @@
 
         /* 8. Botões Globais Fixos Flutuantes */
         .floating-actions-container {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 9999;
+            position: fixed !important;
+            bottom: 25px !important;
+            right: 25px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            z-index: 99999 !important;
         }
 
         .action-circle {
@@ -544,7 +558,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -553,13 +567,14 @@
         }
 
         .btn-float-whatsapp {
-            background-color: #25d366;
+            background-color: #25d366 !important;
         }
 
         .btn-float-whatsapp svg {
             width: 26px;
             height: 26px;
             fill: #fff;
+            display: block;
         }
 
         .btn-float-top {
@@ -618,69 +633,79 @@
         }
 
         @media (max-width: 768px) {
-            /* Mantém a barra de comando sempre visível e horizontal no celular */
             header {
                 padding: 8px 0;
-                background-color: rgba(5, 6, 8, 0.95); /* Garante contraste no mobile */
+                background-color: rgba(5, 6, 8, 0.95);
             }
 
             header .container {
-                flex-direction: row; /* Força o alinhamento lado a lado em vez de coluna */
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
             }
 
-            /* Reduz levemente o tamanho do logo no celular para ganhar área útil */
             .logo-box {
                 width: 65px;
                 padding: 4px;
             }
 
-            /* Mantém os links simplificados e horizontais no topo do celular */
+            /* Ajuste de agrupamento para o botão e menu caberem lado a lado no mobile */
             nav {
-                display: flex !important; 
-                gap: 15px;
+                display: flex !important;
+                gap: 10px;
+                align-items: center;
             }
 
             nav ul {
-                gap: 12px;
+                gap: 8px;
             }
 
             nav ul li a {
-                font-size: 0.8rem; /* Letras ligeiramente menores para caber na tela do celular */
+                font-size: 0.75rem;
             }
 
-            /* Ajustes de escala do texto da Hero para telas pequenas */
+            .btn-header-whatsapp {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+
             h1 {
                 font-size: 1.8rem;
                 line-height: 1.3;
-            }
-
-            .glass-card {
-                padding: 35px 20px;
             }
 
             .hero-wrapper {
                 padding: 15px 10px;
             }
 
-            /* Permite o efeito de fundo dinâmico no celular de forma leve e adaptada */
+            .hero {
+                padding: 40px 15px;
+            }
+
             .hero-parallax-bg {
                 display: block !important;
-                width: 160vw; /* Alarga no mobile para compensar a tela vertical */
+                width: 160vw;
                 height: 120%;
                 background-position: center 20%;
                 background-size: contain;
             }
 
-            section {
-                padding: 35px 0;
-                scroll-margin-top: 110px; /* Mantém o respiro do título corrigido no celular */
+            .glass-card {
+                padding: 30px 20px;
             }
 
-            /* Desativa o scroll snap apenas se a tela for muito pequena para evitar travamento */
+            section {
+                padding: 45px 0;
+                scroll-margin-top: 110px;
+            }
+
             .snap-container-wrapper {
                 scroll-snap-type: none;
+            }
+
+            .floating-actions-container {
+                bottom: 20px !important;
+                right: 20px !important;
             }
         }
     </style>
@@ -688,7 +713,7 @@
 
 <body>
 
-    <!-- CONTAINER DOS BOTÕES FLUTUANTES SOBREPOSTOS NO CANTO -->
+    <!-- CONTAINER DOS BOTÕES FLUTUANTES FIXOS NO CANTO INFERIOR -->
     <div class="floating-actions-container">
         <a href="#" class="action-circle btn-float-top" title="Voltar ao Topo">&uarr;</a>
         <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20gostaria%20de%20um%20diagnostico%20digital%20gratuito."
@@ -700,7 +725,7 @@
         </a>
     </div>
 
-    <!-- 1. HEADER -->
+    <!-- 1. HEADER (COM BOTÃO DO WHATSAPP REINTEGRADO AO CANTO SUPERIOR DIREITO) -->
     <header>
         <div class="container">
             <a href="#" class="logo-link">
@@ -713,23 +738,22 @@
                     <li><a href="#">Início</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#equipe">A Altus</a></li>
-                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
+                <!-- O botão restabelecido de forma limpa dentro do fluxo da barra -->
+                <a href="https://wa.me/SEUNUMERODOWHATSAPP?text=Ola%20Altus,%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                    target="_blank" class="btn-header-whatsapp">WhatsApp</a>
             </nav>
         </div>
     </header>
 
-    <!-- 2. MOLDURA MESTRA DA HERO (COM INVASÃO DE SEÇÃO EXCLUSIVA) -->
+    <!-- 2. MOLDURA MESTRA DA HERO -->
     <div class="hero-wrapper">
         <section class="hero">
-            <!-- Nova div flutuante para a imagem sangrar por baixo da Hero -->
             <div class="hero-parallax-bg"></div>
             <div class="hero-animation-overlay"></div>
 
-            <!-- Caixa de Vidro Fosco Ampla -->
             <div class="glass-card">
-                <!-- TÍTULO CORRIGIDO COM QUEBRA EXATA EM ELITE -->
                 <h1>Sua empresa com posicionamento de elite<br><span>e estruturada para vender mais</span></h1>
                 <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
                     Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
@@ -738,7 +762,7 @@
         </section>
     </div>
 
-    <!-- 3. GRID DE SERVIÇOS NEON (A LOGO DO TOPO SANGRA POR TRÁS DAQUI AGORA) -->
+    <!-- 3. GRID DE SERVIÇOS NEON -->
     <section id="servicos" style="z-index: 5; background-color: transparent;">
         <div class="container">
             <h2 class="section-title">Nossas <span>Especialidades</span> de Entrega</h2>
@@ -768,7 +792,7 @@
     <!-- CONTAINER INTEGRADO PARA O EMBUTIMENTO DO SCROLL AUTOMÁTICO EXCLUSIVO -->
     <div class="snap-container-wrapper">
 
-        <!-- 4. EQUIPE E COLABORADORES (QUEM EXECUTA A SUA ESTRATÉGIA) -->
+        <!-- 4. EQUIPE E COLABORADORES -->
         <section id="equipe" class="snap-section-target">
             <div class="container">
                 <h2 class="section-title">Quem Executa a sua <span>Estratégia</span></h2>
@@ -784,7 +808,7 @@
             </div>
         </section>
 
-        <!-- 5. DEPOIMENTOS (O QUE DIZEM NOSSOS PARCEIROS) -->
+        <!-- 5. DEPOIMENTOS -->
         <section id="depoimentos" class="snap-section-target">
             <div class="container">
                 <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
@@ -812,7 +836,7 @@
             </div>
         </section>
 
-    </div> <!-- FIM DO BLOCO COM SNAP -->
+    </div>
 
     <!-- MINI BLOG / INFORMATIVO -->
     <section id="informativos">
