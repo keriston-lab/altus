@@ -111,15 +111,15 @@
             color: #00c6ff;
         }
 
-        /* Configuração de Alinhamento Amortecido de Seção */
+        /* Configuração de Alinhamento Amortecido de Seção - Corrigido sem altura forçada */
         section {
-            padding: 65px 0;
+            padding: 45px 0; /* Compactado para aproximar ainda mais os blocos */
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
             position: relative;
-            min-height: calc(100vh - 70px);
             display: flex;
             align-items: center;
-            scroll-snap-align: start; /* O ímã age suavemente aqui */
+            width: 100%;
+            scroll-snap-align: start; /* O ímã suave continua agindo na aproximação */
         }
 
         .section-title {
