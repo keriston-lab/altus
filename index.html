@@ -114,49 +114,41 @@
             text-align: center;
             padding: 90px 0 110px 0;
             position: relative;
+            border: none; /* Corrigido aqui */
         }
 
-        /* Efeitos de Luz em Movimento Suave no Fundo */
-        .hero::before,
-        .hero::after {
+        /* Efeitos de Luz em Movimento - Opacidade aumentada para dar contraste */
+        .hero::before, .hero::after {
             content: '';
             position: absolute;
             border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.08;
+            filter: blur(80px);
+            opacity: 0.22; /* Aumentado de 0.08 para 0.22 para ficar visível */
             z-index: -1;
-            animation: flutuar 25px infinite alternate ease-in-out;
+            animation: flutuar 20px infinite alternate ease-in-out;
         }
 
         .hero::before {
             width: 300px;
             height: 300px;
             background: #0072ff;
-            top: 10%;
-            left: 20%;
+            top: 5%;
+            left: 15%;
         }
 
         .hero::after {
             width: 250px;
             height: 250px;
             background: #00c6ff;
-            bottom: 15%;
-            right: 25%;
-            animation-delay: -5s;
+            bottom: 10%;
+            right: 15%;
+            animation-delay: -4s;
         }
 
         @keyframes flutuar {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(30px, -20px) scale(1.15);
-            }
-
-            100% {
-                transform: translate(-20px, 40px) scale(0.9);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -30px) scale(1.2); }
+            100% { transform: translate(-30px, 30px) scale(0.85); }
         }
 
         h1 {
