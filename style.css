@@ -24,19 +24,23 @@ body {
     padding: 0 24px;
 }
 
-/* 1. Header Flutuante Colorido (Laranja Rosado) */
+/* 1. Header Flutuante Colorido (Degradê Translúcido) */
 header {
     position: sticky;
     top: 0;
-    /* Degradê de laranja vibrante para rosa profundo */
-    background: linear-gradient(135deg, rgba(255, 106, 0, 0.95) 0%, rgba(238, 9, 121, 0.95) 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Degradê da Esquerda (Laranja/Rosa) para a Direita (Azul/Ciano) com 75% de opacidade */
+    background: linear-gradient(90deg,
+            rgba(255, 106, 0, 0.75) 0%,
+            rgba(238, 9, 121, 0.75) 45%,
+            rgba(0, 198, 255, 0.75) 100%);
+    /* O filtro que embaça o que rola por trás (aumentado para 16px) */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     z-index: 1000;
     padding: 12px 0;
-    box-shadow: 0 4px 30px rgba(255, 106, 0, 0.25);
-    /* Sombra colorida acompanhando o clima */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    /* Sombra escura para não poluir o vidro */
 }
 
 header .container {
