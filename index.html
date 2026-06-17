@@ -18,8 +18,9 @@
         rel="stylesheet">
 
     <style>
-        /* Fundações e Reset - Tiramos o scroll-snap global daqui */
+        /* Fundações, Reset e Mecânica de Rolagem Suavizada (Estilo Hub Proximity) */
         html {
+            scroll-snap-type: y proximity;
             scroll-behavior: smooth;
         }
 
@@ -140,12 +141,14 @@
             color: #00c6ff;
             text-shadow: 0 0 15px rgba(0, 198, 255, 0.2);
         }
-        
-       /* 2. Hero Section: Expansão Horizontal Máxima e Ajuste de Quebra de Texto */
+
+        /* 2. Hero Section: Expansão Horizontal Máxima e Ajuste de Quebra de Texto */
         .hero-wrapper {
-            padding: 20px 12px; /* Margem sutil para preservar o contorno nas bordas */
+            padding: 20px 12px;
+            /* Margem sutil para preservar o contorno nas bordas */
             width: 100%;
-            max-width: 100%; /* Ocupa toda a extensão horizontal do monitor */
+            max-width: 100%;
+            /* Ocupa toda a extensão horizontal do monitor */
             margin: 0 auto;
         }
 
@@ -157,7 +160,7 @@
             background-size: cover;
             position: relative;
             overflow: hidden;
-            background-image: linear-gradient(to bottom, rgba(5,6,8,0.75), rgba(13,14,18,0.7)), url('links/logosemfundo.png');
+            background-image: linear-gradient(to bottom, rgba(5, 6, 8, 0.75), rgba(13, 14, 18, 0.7)), url('links/logosemfundo.png');
             padding: 110px 24px;
             display: flex;
             align-items: center;
@@ -172,14 +175,22 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 15% 25%, rgba(0, 114, 255, 0.2) 0%, transparent 45%),
-                        radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 85% 75%, rgba(0, 198, 255, 0.15) 0%, transparent 50%);
             z-index: 1;
-            animation: backgroundShift 18px linear infinite alternate;
+            animation: backgroundShift 18s linear infinite alternate;
+            /* Corrigido de 18px para 18s */
         }
 
         @keyframes backgroundShift {
-            0% { transform: scale(1) translate(0, 0); filter: hue-rotate(0deg); }
-            100% { transform: scale(1.08) translate(15px, -15px) filter: hue-rotate(10deg); }
+            0% {
+                transform: scale(1) translate(0, 0);
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1.08) translate(15px, -15px); /* Ponto e vírgula aqui */
+                filter: hue-rotate(10deg); /* Propriedade isolada na linha de baixo */
+            }
         }
 
         /* Glassmorphism Card alargado para forçar o término da linha em "elite" */
@@ -193,7 +204,8 @@
             border-radius: 20px;
             padding: 60px 50px;
             width: 100%;
-            max-width: 1060px; /* Alargado estrategicamente para a distribuição do título */
+            max-width: 1060px;
+            /* Alargado estrategicamente para a distribuição do título */
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             text-align: center;
@@ -207,8 +219,11 @@
             margin-bottom: 24px;
             background: linear-gradient(135deg, #fff 65%, #00c6ff);
             -webkit-background-clip: text;
+            background-clip: text;
+            /* Adicionada a propriedade padrão para corrigir o Warning */
             -webkit-text-fill-color: transparent;
-            width: 100%; /* Permite que o texto use o espaço livre comandado pelo <br> */
+            width: 100%;
+            /* Permite que o texto use o espaço livre comandado pelo <br> */
             margin-left: auto;
             margin-right: auto;
         }
@@ -380,7 +395,7 @@
             box-shadow: 0 0 25px rgba(0, 114, 255, 0.12);
         }
 
-        .estrelas {
+        .stars {
             color: #ffb800;
             margin-bottom: 15px;
             font-size: 0.9rem;
@@ -668,7 +683,7 @@
                 <h1>Sua empresa com posicionamento de elite<br><span>e estruturada para vender mais</span></h1>
                 <p>Desenvolvemos Landing Pages, sites institucionais e cartões digitais de alta performance sob medida.
                     Prontos para buscas do Google e estruturados para máxima conversão de leads.</p>
-                <a href="#contato" class="btn-cta">Quero um Diagnóstico Digital Gratuito</a>
+                <a href="#contato" class="btn-cta">Quero um Diagnostic Digital Gratuito</a>
             </div>
         </section>
     </div>
@@ -725,7 +740,7 @@
                 <h2 class="section-title">O que dizem nossos <span>Parceiros</span></h2>
                 <div class="grid-depoimentos">
                     <div class="depoimento-card">
-                        <div class="estrelas">★★★★★</div>
+                        <div class="stars">★★★★★</div>
                         <p>"A velocidade com que a página abre no celular é impressionante. Meus clientes elogiaram a
                             organização dos botões e o contato ficou muito mais ágil."</p>
                         <div class="autor-info">
@@ -734,7 +749,7 @@
                         </div>
                     </div>
                     <div class="depoimento-card">
-                        <div class="estrelas">★★★★★</div>
+                        <div class="stars">★★★★★</div>
                         <p>"Paramos de pagar taxas abusivas para agências tradicionais de desenvolvimento. A Altus
                             entregou
                             a plataforma perfeita e o atendimento foi exemplar."</p>
