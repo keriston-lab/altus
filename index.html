@@ -566,6 +566,100 @@
             color: #6b7280;
         }
 
+        /* --- METODOLOGIA / COMO FAZEMOS --- */
+        .metodologia-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .method-card {
+            background: rgba(13, 14, 18, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: default;
+        }
+
+        /* Efeito de rastro do mouse (Hover interativo) */
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Mistura de Laranja/Âmbar com o Azul Neon da marca */
+            background: radial-gradient(
+                400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 122, 0, 0.12),
+                rgba(0, 198, 255, 0.05) 40%,
+                transparent 60%
+            );
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none; /* Garante que não interfira no clique/leitura */
+        }
+
+        .method-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Borda de destaque no hover para fechar o visual premium */
+        .method-card:hover {
+            border-color: rgba(255, 122, 0, 0.3);
+        }
+
+        /* Conteúdo elevado acima do gradiente */
+        .method-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Número grande no fundo simulando o estilo do seu primeiro print */
+        .method-step-bg {
+            font-size: 6rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.02);
+            position: absolute;
+            top: -15px;
+            right: 10px;
+            z-index: 1;
+            line-height: 1;
+            transition: color 0.4s ease;
+        }
+
+        .method-card:hover .method-step-bg {
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        .method-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .method-content p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 900px) {
+            .metodologia-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* 6. FAQ */
         .faq-wrapper {
             max-width: 750px;
@@ -1005,7 +1099,7 @@
                 <div class="hunter-card">
                     <div class="hunter-icon">🌐</div>
                     <h3>Landing Pages & Sites Institucionais</h3>
-                    <p>Páginas de alta conversão com design alinhado à identidade da sua marca. Estrutura blindada contra invasões, 
+                    <p>Páginas de alta conversão com design alinhado à identidade da sua marca. Estrutura blindada contra invasões,
                         otimização nativa para dominar as buscas do Google e das novas IAs e ultraleve para carregamento
                         instantâneo em celulares.</p>
                 </div>
@@ -1046,42 +1140,42 @@
                             <!-- Bloco Original (Apenas altere os textos/ícones no futuro por tags <img>) -->
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 22h20L12 2z" />
-                                </svg>Focalizze</div>
+                                </svg>Focar Info</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                                 </svg>Grupo Mogi</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                </svg>Hygéia Clínica</div>
+                                </svg>Heperes Clínica</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z" />
-                                </svg>Illo Conforto</div>
+                                </svg>Ellos Móveis</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
-                                </svg>Jukadani Bar</div>
+                                </svg>Festa Bar</div>
 
                             <!-- Bloco Gêmeo Espelho (Garante a continuidade infinita do movimento) -->
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 22h20L12 2z" />
-                                </svg>Focalizze</div>
+                                </svg>Focar Info</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                                 </svg>Grupo Mogi</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                </svg>Hygéia Clínica</div>
+                                </svg>Heperes Clínica</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z" />
-                                </svg>Illo Conforto</div>
+                                </svg>Ellos Móveis</div>
                             <div class="ticker-item"><svg viewBox="0 0 24 24">
                                     <path
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L11 15v1c0 1.1.9 2 2 2v1.93zm5.9-3.41c-.13-.5-.45-.96-.9-1.24l-1.5-.9c-.25-.15-.5-.22-.75-.22h-1.75v-2c0-.55-.45-1-1-1h-2v-2h2c.55 0 1-.45 1-1V5h1c1.1 0 2-.9 2-2v-.07c2.93.81 5.15 3.25 5.65 6.27l-2.07 1.38c-.33.22-.53.59-.53.98v1.36c0 .54.3 1.03.78 1.27l1.39.72c-.17.6-.45 1.16-.82 1.67z" />
-                                </svg>Jukadani Bar</div>
+                                </svg>Festa Bar</div>
 
                         </div>
                     </div>
@@ -1143,6 +1237,46 @@
                     <a href="#contato"
                         style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
                         &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodologia">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 15px;">Como construímos sua <span>Autoridade</span></h2>
+            <p class="section-subtitle">Um processo de engenharia digital guiado por dados, focado em alta performance e
+                resultados reais.</p>
+    
+            <div class="metodologia-grid">
+                <div class="method-card">
+                    <div class="method-step-bg">01</div>
+                    <div class="method-content">
+                        <h3>Descoberta & Análise de IA</h3>
+                        <p>Mapeamos o comportamento do seu mercado através de ferramentas de Inteligência Artificial.
+                            Entendemos as lacunas deixadas pela concorrência para definir a arquitetura de conversão exata
+                            que o seu cliente procura.</p>
+                    </div>
+                </div>
+    
+                <div class="method-card">
+                    <div class="method-step-bg">02</div>
+                    <div class="method-content">
+                        <h3>Engenharia em Código Puro</h3>
+                        <p>Não dependemos de construtores de blocos amadores. Seu projeto é programado nativamente,
+                            garantindo uma estrutura inviolável e uma velocidade de carregamento extrema, essencial para
+                            reter usuários de celular.</p>
+                    </div>
+                </div>
+    
+                <div class="method-card">
+                    <div class="method-step-bg">03</div>
+                    <div class="method-content">
+                        <h3>Indexação & Performance</h3>
+                        <p>Finalizamos com a otimização técnica avançada. Cada linha de código é estruturada semanticamente
+                            para que os motores de busca do Google e as IAs de recomendação posicionem sua empresa no topo
+                            das buscas locais.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1257,6 +1391,22 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.querySelectorAll('.method-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                // Pega o tamanho e posição do card na tela
+                const rect = card.getBoundingClientRect();
+                // Calcula a posição do mouse em relação ao card
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Injeta as coordenadas no CSS
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 
 </body>
 
