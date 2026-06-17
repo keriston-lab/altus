@@ -1,6 +1,8 @@
 /* Fundações, Reset e Rolagem Livre */
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 * {
@@ -15,6 +17,7 @@ body {
     color: #f3f4f6;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -165,6 +168,8 @@ section {
     align-items: center;
     justify-content: center;
     width: 100%;
+    overflow: hidden;
+    /* Esta é a trava que corta a sobra da imagem */
 }
 
 .hero-parallax-bg {
@@ -1014,7 +1019,7 @@ footer {
         gap: 15px;
         text-align: center;
     }
-    
+
 }@media (max-width: 768px) {
     header { padding: 8px 0; background-color: rgba(12, 32, 39, 0.96); }
     header .container { flex-direction: row; justify-content: space-between; align-items: center; }
