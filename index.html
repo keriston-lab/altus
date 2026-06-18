@@ -211,213 +211,272 @@
         </div>
     </section>
 
-    <section id="informativos" style="overflow: hidden; padding-bottom: 60px; display: block;">
-        <div class="container" style="margin-bottom: 20px;">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Estratégia e
-                <span>Posicionamento</span></h2>
-            <p style="color: #9ca3af; font-size: 1.05rem;">Deslize para ler nossos artigos e guias técnicos sobre
-                performance digital.</p>
-        </div>
+    <!-- Canvas de partículas — cobre informativos, metodologia, segurança e FAQ -->
+    <div id="particles-bg" style="position: relative;">
+        <canvas id="particles-canvas"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>
 
-        <div class="scroll-horizontal-container">
-
-            <div class="scroll-item hunter-card"
-                style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ARTIGO
-                        INFORMATIVO</span>
-                    <h3 style="margin: 10px 0;">O risco invisível de estruturar seu negócio em terreno alugado</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Entenda por que depender exclusivamente de redes
-                        sociais como o Instagram pode cortar o fluxo de clientes da sua empresa sem aviso prévio.</p>
-                </div>
-                <a href="#contato"
-                    style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
-                    &rarr;</a>
+        <section id="informativos" style="padding-bottom: 60px; display: block; position: relative; z-index: 1;">
+            <div class="container" style="margin-bottom: 20px;">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Estratégia e
+                    <span>Posicionamento</span>
+                </h2>
+                <p style="color: #9ca3af; font-size: 1.05rem;">Artigos e guias técnicos sobre performance digital.</p>
             </div>
 
-            <div class="scroll-item hunter-card"
-                style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">GUIA
-                        TÉCNICO</span>
-                    <h3 style="margin: 10px 0;">Como as novas Inteligências Artificiais recomendam empresas locais?</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Os critérios ocultos que ferramentas de busca por
-                        IA e robôs de geolocalização avaliam no código de um site antes de sugerirem seu serviço.</p>
-                </div>
-                <a href="#contato"
-                    style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
-                    &rarr;</a>
-            </div>
+            <div class="container">
+                <div class="grid-hunter">
 
-            <div class="scroll-item hunter-card"
-                style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <span style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ESTUDO DE
-                        CASO</span>
-                    <h3 style="margin: 10px 0;">O impacto do carregamento nativo na retenção de leads</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Como a engenharia de código puro aumenta a
-                        permanência de usuários de celular em landing pages de alta conversão.</p>
-                </div>
-                <a href="#contato"
-                    style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber mais
-                    &rarr;</a>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="metodologia">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: 15px;">Como construímos sua <span>Autoridade</span></h2>
-            <p class="section-subtitle">Um processo de engenharia digital guiado por dados, focado em alta performance e
-                resultados reais.</p>
-
-            <div class="metodologia-grid">
-                <div class="method-card">
-                    <div class="method-step-bg">01</div>
-                    <div class="method-content">
-                        <h3>Descoberta & Análise de IA</h3>
-                        <p>Mapeamos o comportamento do seu mercado através de ferramentas de Inteligência Artificial.
-                            Entendemos as lacunas deixadas pela concorrência para definir a arquitetura de conversão
-                            exata
-                            que o seu cliente procura.</p>
+                    <div class="hunter-card"
+                        style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ARTIGO
+                                INFORMATIVO</span>
+                            <h3 style="margin: 10px 0;">O risco invisível de estruturar seu negócio em terreno alugado
+                            </h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Entenda por que depender exclusivamente
+                                de redes sociais como o Instagram pode cortar o fluxo de clientes da sua empresa sem
+                                aviso prévio.</p>
+                        </div>
+                        <a href="#contato"
+                            style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber
+                            mais &rarr;</a>
                     </div>
-                </div>
 
-                <div class="method-card">
-                    <div class="method-step-bg">02</div>
-                    <div class="method-content">
-                        <h3>Engenharia em Código Puro</h3>
-                        <p>Não dependemos de construtores de blocos amadores. Seu projeto é programado nativamente,
-                            garantindo uma estrutura inviolável e uma velocidade de carregamento extrema, essencial para
-                            reter usuários de celular.</p>
+                    <div class="hunter-card"
+                        style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">GUIA
+                                TÉCNICO</span>
+                            <h3 style="margin: 10px 0;">Como as novas Inteligências Artificiais recomendam empresas
+                                locais?</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Os critérios ocultos que ferramentas de
+                                busca por IA e robôs de geolocalização avaliam no código de um site antes de sugerirem
+                                seu serviço.</p>
+                        </div>
+                        <a href="#contato"
+                            style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber
+                            mais &rarr;</a>
                     </div>
-                </div>
 
-                <div class="method-card">
-                    <div class="method-step-bg">03</div>
-                    <div class="method-content">
-                        <h3>Indexação & Performance</h3>
-                        <p>Finalizamos com a otimização técnica avançada. Cada linha de código é estruturada
-                            semanticamente
-                            para que os motores de busca do Google e as IAs de recomendação posicionem sua empresa no
-                            topo
-                            das buscas locais.</p>
+                    <div class="hunter-card"
+                        style="border-color: rgba(255,255,255,0.02); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span
+                                style="font-size: 0.75rem; color: #00c6ff; font-weight: 700; letter-spacing: 0.5px;">ESTUDO
+                                DE CASO</span>
+                            <h3 style="margin: 10px 0;">O impacto do carregamento nativo na retenção de leads</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Como a engenharia de código puro aumenta
+                                a permanência de usuários de celular em landing pages de alta conversão.</p>
+                        </div>
+                        <a href="#contato"
+                            style="color: #00c6ff; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Saber
+                            mais &rarr;</a>
                     </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="seguranca">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: 15px;">Seu negócio <span>protegido</span> — e lucrando mais</h2>
-            <p class="section-subtitle">Dois motivos concretos para parar de adiar a sua presença digital profissional.</p>
+        <section id="metodologia" style="position: relative; z-index: 1;">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 15px;">Como construímos sua <span>Autoridade</span></h2>
+                <p class="section-subtitle">Um processo de engenharia digital guiado por dados, focado em alta
+                    performance e
+                    resultados reais.</p>
 
-            <div class="grid-hunter" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 50px;">
+                <div class="metodologia-grid">
+                    <div class="method-card">
+                        <div class="method-step-bg">01</div>
+                        <div class="method-content">
+                            <h3>Descoberta & Análise de IA</h3>
+                            <p>Mapeamos o comportamento do seu mercado através de ferramentas de Inteligência
+                                Artificial.
+                                Entendemos as lacunas deixadas pela concorrência para definir a arquitetura de conversão
+                                exata
+                                que o seu cliente procura.</p>
+                        </div>
+                    </div>
 
-                <div class="hunter-card" style="border-color: rgba(0,198,255,0.08);">
-                    <div class="hunter-icon">📈</div>
-                    <h3>O investimento que se paga sozinho</h3>
-                    <p style="margin-bottom: 16px;">Pense no valor médio de um cliente novo para o seu negócio. Uma venda, uma consulta, um serviço. Quanto vale?</p>
-                    <p style="margin-bottom: 16px;">Agora pense assim: se a sua presença digital trouxer <strong style="color: #f3f4f6;">apenas 1 cliente novo por mês</strong> que antes não te encontrava — já cobre o investimento. O que vier além disso é lucro direto.</p>
-                    <p>Negócios que aparecem bem no Google recebem contatos enquanto dormem. Sem esforço adicional. Sem depender de indicação.</p>
+                    <div class="method-card">
+                        <div class="method-step-bg">02</div>
+                        <div class="method-content">
+                            <h3>Engenharia em Código Puro</h3>
+                            <p>Não dependemos de construtores de blocos amadores. Seu projeto é programado nativamente,
+                                garantindo uma estrutura inviolável e uma velocidade de carregamento extrema, essencial
+                                para
+                                reter usuários de celular.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-step-bg">03</div>
+                        <div class="method-content">
+                            <h3>Indexação & Performance</h3>
+                            <p>Finalizamos com a otimização técnica avançada. Cada linha de código é estruturada
+                                semanticamente
+                                para que os motores de busca do Google e as IAs de recomendação posicionem sua empresa
+                                no
+                                topo
+                                das buscas locais.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="hunter-card" style="border-color: rgba(0,198,255,0.08);">
-                    <div class="hunter-icon">🔒</div>
-                    <h3>Segurança que você sente na prática</h3>
-                    <p style="margin-bottom: 16px;">Você já ouviu falar de site hackeado, página clonada ou Instagram banido sem motivo? Isso acontece todos os dias com negócios que constroem em terreno alugado ou usam plataformas vulneráveis.</p>
-                    <p style="margin-bottom: 16px;">A estrutura da Altus é diferente: <strong style="color: #f3f4f6;">código nativo, sem plugin desatualizado, sem brecha exposta</strong>. Hospedagem estável. Sem dependência de rede social que pode cair ou te banir de um dia para o outro.</p>
-                    <p>O que entregamos é seu — está no seu nome, sob seu controle, funcionando enquanto você foca no seu negócio.</p>
-                </div>
-
             </div>
+        </section>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+        <section id="seguranca">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 15px;">Seu negócio <span>protegido</span> — e lucrando
+                    mais</h2>
+                <p class="section-subtitle">Dois motivos concretos para parar de adiar a sua presença digital
+                    profissional.</p>
 
-                <div style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
-                    <span style="font-size: 1.6rem; flex-shrink: 0;">⚡</span>
-                    <div>
-                        <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Site que não cai</p>
-                        <p style="color: #9ca3af; font-size: 0.85rem;">Hospedagem estável. Seu negócio continua recebendo clientes mesmo quando outras plataformas ficam fora do ar.</p>
+                <div class="grid-hunter"
+                    style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 50px;">
+
+                    <div class="hunter-card" style="border-color: rgba(0,198,255,0.08);">
+                        <div class="hunter-icon">📈</div>
+                        <h3>O investimento que se paga sozinho</h3>
+                        <p style="margin-bottom: 16px;">Pense no valor médio de um cliente novo para o seu negócio. Uma
+                            venda, uma consulta, um serviço. Quanto vale?</p>
+                        <p style="margin-bottom: 16px;">Agora pense assim: se a sua presença digital trouxer <strong
+                                style="color: #f3f4f6;">apenas 1 cliente novo por mês</strong> que antes não te
+                            encontrava — já cobre o investimento. O que vier além disso é lucro direto.</p>
+                        <p>Negócios que aparecem bem no Google recebem contatos enquanto dormem. Sem esforço adicional.
+                            Sem depender de indicação.</p>
                     </div>
+
+                    <div class="hunter-card" style="border-color: rgba(0,198,255,0.08);">
+                        <div class="hunter-icon">🔒</div>
+                        <h3>Segurança que você sente na prática</h3>
+                        <p style="margin-bottom: 16px;">Você já ouviu falar de site hackeado, página clonada ou
+                            Instagram banido sem motivo? Isso acontece todos os dias com negócios que constroem em
+                            terreno alugado ou usam plataformas vulneráveis.</p>
+                        <p style="margin-bottom: 16px;">A estrutura da Altus é diferente: <strong
+                                style="color: #f3f4f6;">código nativo, sem plugin desatualizado, sem brecha
+                                exposta</strong>. Hospedagem estável. Sem dependência de rede social que pode cair ou te
+                            banir de um dia para o outro.</p>
+                        <p>O que entregamos é seu — está no seu nome, sob seu controle, funcionando enquanto você foca
+                            no seu negócio.</p>
+                    </div>
+
                 </div>
 
-                <div style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
-                    <span style="font-size: 1.6rem; flex-shrink: 0;">🛡️</span>
-                    <div>
-                        <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Sem brecha para hacker</p>
-                        <p style="color: #9ca3af; font-size: 0.85rem;">Código puro, sem plugin de terceiro. Nada de WordPress desatualizado ou construtor genérico que vira porta aberta para invasão.</p>
-                    </div>
-                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
 
-                <div style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
-                    <span style="font-size: 1.6rem; flex-shrink: 0;">📵</span>
-                    <div>
-                        <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Independente do Instagram</p>
-                        <p style="color: #9ca3af; font-size: 0.85rem;">Redes sociais podem cair, banir contas e mudar regras. Seu site e cartão digital não dependem de nenhuma plataforma.</p>
+                    <div
+                        style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="font-size: 1.6rem; flex-shrink: 0;">⚡</span>
+                        <div>
+                            <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Site que
+                                não cai</p>
+                            <p style="color: #9ca3af; font-size: 0.85rem;">Hospedagem estável. Seu negócio continua
+                                recebendo clientes mesmo quando outras plataformas ficam fora do ar.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
-                    <span style="font-size: 1.6rem; flex-shrink: 0;">🗂️</span>
-                    <div>
-                        <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Seus dados, seu controle</p>
-                        <p style="color: #9ca3af; font-size: 0.85rem;">Os leads que chegam pelo seu site são seus. Nenhuma plataforma intermediária armazena ou monetiza o contato dos seus clientes.</p>
+                    <div
+                        style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="font-size: 1.6rem; flex-shrink: 0;">🛡️</span>
+                        <div>
+                            <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Sem brecha
+                                para hacker</p>
+                            <p style="color: #9ca3af; font-size: 0.85rem;">Código puro, sem plugin de terceiro. Nada de
+                                WordPress desatualizado ou construtor genérico que vira porta aberta para invasão.</p>
+                        </div>
                     </div>
-                </div>
 
+                    <div
+                        style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="font-size: 1.6rem; flex-shrink: 0;">📵</span>
+                        <div>
+                            <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">
+                                Independente do Instagram</p>
+                            <p style="color: #9ca3af; font-size: 0.85rem;">Redes sociais podem cair, banir contas e
+                                mudar regras. Seu site e cartão digital não dependem de nenhuma plataforma.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(13,14,18,0.7); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
+                        <span style="font-size: 1.6rem; flex-shrink: 0;">🗂️</span>
+                        <div>
+                            <p style="font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Seus
+                                dados, seu controle</p>
+                            <p style="color: #9ca3af; font-size: 0.85rem;">Os leads que chegam pelo seu site são seus.
+                                Nenhuma plataforma intermediária armazena ou monetiza o contato dos seus clientes.</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
-            <div class="faq-wrapper">
-                <details>
-                    <summary>Qual o diferencial da estrutura da Altus?</summary>
-                    <div class="faq-content">
-                        Não utilizamos construtores pesados e genéricos do mercado. Nosso código é escrito de forma
-                        nativa e enxuta, garantindo carregamento instantâneo no celular, segurança inviolável contra
-                        vírus e estabilidade total.
-                    </div>
-                </details>
-                <details>
-                    <summary>Como o site me ajuda a aparecer no Google e nas IAs?</summary>
-                    <div class="faq-content">
-                        Nossos projetos são estruturados semanticamente. Isso significa que organizamos as tags internas
-                        de forma otimizada para que os robôs de inteligência artificial (como ChatGPT e Gemini) e o
-                        algoritmo do Google cataloguem e recomendem sua empresa com prioridade regional.
-                    </div>
-                </details>
-                <details>
-                    <summary>Eu poderei atualizar os links do meu cartão digital depois?</summary>
-                    <div class="faq-content">
-                        Sim. Toda a estrutura é entregue de forma organizada e fornecemos o suporte básico necessário
-                        para que alterações simples de contatos, links ou redes sociais sejam feitas de forma ágil
-                        sempre que seu negócio expandir.
-                    </div>
-                </details>
-                <details>
-                    <summary>Meu negócio pode ser hackeado ou clonado?</summary>
-                    <div class="faq-content">
-                        Essa é uma preocupação legítima — e a resposta honesta é: depende de como seu site foi feito. A grande maioria dos ataques acontece em sites construídos com WordPress ou plataformas genéricas cheias de plugins desatualizados. Cada plugin é uma porta potencial para invasão.<br><br>
-                        O que a Altus entrega é diferente: código nativo, escrito do zero, sem dependência de plugin de terceiro. Não existe camada vulnerável exposta. É como comparar uma porta de madeira com uma de aço — o invasor prefere o caminho mais fácil, e o seu não vai ser fácil.
-                    </div>
-                </details>
-                <details>
-                    <summary>O que acontece com o meu negócio se o Instagram cair ou minha conta for banida?</summary>
-                    <div class="faq-content">
-                        Em outubro de 2021, o Instagram, Facebook e WhatsApp ficaram fora do ar por mais de 6 horas. Negócios que dependiam exclusivamente dessas plataformas ficaram completamente mudos — sem como receber cliente, responder mensagem ou vender.<br><br>
-                        Quem tinha site próprio e cartão digital continuou funcionando normalmente. Além da instabilidade, contas são banidas sem aviso e sem explicação — e recuperar uma conta comercial pode levar semanas ou nunca acontecer.<br><br>
-                        Ter uma estrutura própria não significa abandonar as redes sociais. Significa não depender exclusivamente delas. Seu site e seu cartão digital são seus — nenhuma plataforma pode tirar isso de você.
-                    </div>
-                </details>
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+                <div class="faq-wrapper">
+                    <details>
+                        <summary>Qual o diferencial da estrutura da Altus?</summary>
+                        <div class="faq-content">
+                            Não utilizamos construtores pesados e genéricos do mercado. Nosso código é escrito de forma
+                            nativa e enxuta, garantindo carregamento instantâneo no celular, segurança inviolável contra
+                            vírus e estabilidade total.
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Como o site me ajuda a aparecer no Google e nas IAs?</summary>
+                        <div class="faq-content">
+                            Nossos projetos são estruturados semanticamente. Isso significa que organizamos as tags
+                            internas
+                            de forma otimizada para que os robôs de inteligência artificial (como ChatGPT e Gemini) e o
+                            algoritmo do Google cataloguem e recomendem sua empresa com prioridade regional.
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Eu poderei atualizar os links do meu cartão digital depois?</summary>
+                        <div class="faq-content">
+                            Sim. Toda a estrutura é entregue de forma organizada e fornecemos o suporte básico
+                            necessário
+                            para que alterações simples de contatos, links ou redes sociais sejam feitas de forma ágil
+                            sempre que seu negócio expandir.
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Meu negócio pode ser hackeado ou clonado?</summary>
+                        <div class="faq-content">
+                            Essa é uma preocupação legítima — e a resposta honesta é: depende de como seu site foi
+                            feito. A grande maioria dos ataques acontece em sites construídos com WordPress ou
+                            plataformas genéricas cheias de plugins desatualizados. Cada plugin é uma porta potencial
+                            para invasão.<br><br>
+                            O que a Altus entrega é diferente: código nativo, escrito do zero, sem dependência de plugin
+                            de terceiro. Não existe camada vulnerável exposta. É como comparar uma porta de madeira com
+                            uma de aço — o invasor prefere o caminho mais fácil, e o seu não vai ser fácil.
+                        </div>
+                    </details>
+                    <details>
+                        <summary>O que acontece com o meu negócio se o Instagram cair ou minha conta for banida?
+                        </summary>
+                        <div class="faq-content">
+                            Em outubro de 2021, o Instagram, Facebook e WhatsApp ficaram fora do ar por mais de 6 horas.
+                            Negócios que dependiam exclusivamente dessas plataformas ficaram completamente mudos — sem
+                            como receber cliente, responder mensagem ou vender.<br><br>
+                            Quem tinha site próprio e cartão digital continuou funcionando normalmente. Além da
+                            instabilidade, contas são banidas sem aviso e sem explicação — e recuperar uma conta
+                            comercial pode levar semanas ou nunca acontecer.<br><br>
+                            Ter uma estrutura própria não significa abandonar as redes sociais. Significa não depender
+                            exclusivamente delas. Seu site e seu cartão digital são seus — nenhuma plataforma pode tirar
+                            isso de você.
+                        </div>
+                    </details>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div><!-- fim #particles-bg -->
 
     <section id="contato">
         <div class="container">
@@ -517,12 +576,15 @@
                 </div>
                 <div class="footer-bottom">
                     <div>
-                        <p style="font-weight: 600; margin-bottom: 4px;">&copy; 2026 Altus Soluções Digitais. Todos os direitos
+                        <p style="font-weight: 600; margin-bottom: 4px;">&copy; 2026 Altus Soluções Digitais. Todos os
+                            direitos
                             reservados.</p>
-                        <p style="font-size: 0.75rem; opacity: 0.8;">CNPJ 00.000.000/0001-00 | Infraestrutura e posicionamento web.</p>
+                        <p style="font-size: 0.75rem; opacity: 0.8;">CNPJ 00.000.000/0001-00 | Infraestrutura e
+                            posicionamento web.</p>
                     </div>
                     <div class="powered-by">
-                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">powered by <a href="links/index.html"
+                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">powered by <a
+                                href="links/index.html"
                                 style="color: #ffffff; text-decoration: underline; font-weight: bold;">altus</a></p>
                     </div>
                     <a href="#" class="social-icon" title="Instagram">
@@ -537,6 +599,78 @@
     </footer>
 
     <script>
+        // ── Partículas flutuantes ──────────────────────────────────────────
+        (function () {
+            const canvas = document.getElementById('particles-canvas');
+            const wrapper = document.getElementById('particles-bg');
+            const ctx = canvas.getContext('2d');
+            let mx = -999, my = -999;
+            const N = 80;
+            let pts = [];
+
+            function init() {
+                canvas.width = wrapper.offsetWidth;
+                canvas.height = wrapper.offsetHeight;
+                pts = Array.from({ length: N }, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    r: Math.random() * 1.4 + 0.4
+                }));
+            }
+
+            window.addEventListener('resize', init);
+            window.addEventListener('mousemove', e => {
+                const box = wrapper.getBoundingClientRect();
+                mx = e.clientX - box.left;
+                my = e.clientY - box.top;
+            });
+
+            function draw() {
+                canvas.width = wrapper.offsetWidth;
+                canvas.height = wrapper.offsetHeight;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                pts.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    const dx = p.x - mx, dy = p.y - my;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const near = dist < 100;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, near ? p.r * 2 : p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = near ? 'rgba(0,198,255,0.9)' : 'rgba(0,198,255,0.3)';
+                    ctx.fill();
+                });
+
+                for (let i = 0; i < pts.length; i++) {
+                    for (let j = i + 1; j < pts.length; j++) {
+                        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < 90) {
+                            ctx.beginPath();
+                            ctx.moveTo(pts[i].x, pts[i].y);
+                            ctx.lineTo(pts[j].x, pts[j].y);
+                            ctx.strokeStyle = `rgba(0,198,255,${0.12 * (1 - d / 90)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+
+            init();
+            draw();
+        })();
+
+        // ── Cards interativos ──────────────────────────────────────────────
         const interactiveCards = document.querySelectorAll('.method-card, .glass-card, .contato-box');
 
         interactiveCards.forEach(card => {
