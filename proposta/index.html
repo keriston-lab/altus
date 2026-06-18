@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proposta Comercial — Altus Soluções Digitais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #050608;
+      --surface: rgba(13,14,18,0.85);
+      --border: rgba(255,255,255,0.05);
+      --cyan: #00c6ff;
+      --blue: #0072ff;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(to top right, rgba(0,198,255,0.75), rgba(238,9,121,0.75) 50%, rgba(255,106,0,0.75));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 5px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-box span {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #050608;
+      letter-spacing: -0.5px;
+    }
+
+    .header-badge {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 24px 48px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(0,198,255,0.35);
+      border-radius: 30px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+      background: rgba(0,198,255,0.06);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #fff 60%, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 16px 24px 64px;
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(0,198,255,0.25);
+      box-shadow: 0 0 30px rgba(0,198,255,0.07);
+    }
+
+    .service-header {
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .icon-card   { background: rgba(0,114,255,0.12); }
+    .icon-maps   { background: rgba(255,106,0,0.12); }
+    .icon-site   { background: rgba(0,198,255,0.12); }
+
+    .service-header-text h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .service-header-text p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .service-body {
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ── PLAN CARD ── */
+    .plan {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,198,255,0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .plan:hover { border-color: var(--cyan); }
+    .plan:hover::before { opacity: 1; }
+
+    .plan.destaque {
+      border-color: rgba(0,198,255,0.3);
+      background: rgba(0,198,255,0.04);
+    }
+
+    .plan-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .plan-label span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+    }
+
+    .badge-rec {
+      background: rgba(0,198,255,0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(0,198,255,0.25);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .plan-price {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .plan-price .main {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .plan-price .main span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .plan-price .sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .plan-features li {
+      font-size: 0.85rem;
+      color: #d1d5db;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--cyan);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .plan-features li.no::before {
+      content: '✕';
+      color: #4b5563;
+    }
+
+    .plan-features li.no { color: #4b5563; }
+
+    .btn-escolher {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-unico {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-unico:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-recorrente {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0,114,255,0.25);
+    }
+
+    .btn-recorrente:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,114,255,0.4);
+    }
+
+    /* ── DOMAIN NOTE ── */
+    .domain-note {
+      max-width: 1060px;
+      margin: -16px auto 0;
+      padding: 0 24px;
+    }
+
+    .domain-note p {
+      font-size: 0.82rem;
+      color: #4b5563;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .domain-note p strong { color: var(--muted); }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      padding: 48px 24px 64px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-cta p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .btn-diagnostico {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,114,255,0.25);
+      transition: all 0.3s ease;
+      animation: pulse 2.5s infinite;
+    }
+
+    .btn-diagnostico:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,114,255,0.45);
+    }
+
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(0,114,255,0.5); }
+      70%  { box-shadow: 0 0 0 14px rgba(0,114,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,114,255,0); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: #374151;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .service-body { grid-template-columns: 1fr; }
+      .service-header { padding: 20px; }
+      .service-body { padding: 20px; }
+      .plan-price .main { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-box">
+    <span>Altus</span>
+  </div>
+  <div class="header-badge">Proposta Comercial</div>
+</header>
+
+<section class="hero">
+  <div class="hero-tag">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#00c6ff" stroke-width="1.5"/><path d="M6 4v3M6 8.5v.5" stroke="#00c6ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Soluções sob medida para o seu negócio
+  </div>
+  <h1>Escolha o plano ideal para crescer</h1>
+  <p>Presença digital profissional a partir de R$29/mês. Sem Wix. Sem WordPress. Código nativo, rápido e feito para o Google.</p>
+</section>
+
+<div class="services">
+
+  <!-- CARTÃO DIGITAL -->
+  <div class="service-card">
+    <div class="service-header">
+      <div class="service-icon icon-card">💳</div>
+      <div class="service-header-text">
+        <h2>Cartão de Visita Digital</h2>
+        <p>Substitua a bio poluída do Instagram por um link profissional centralizado</p>
+      </div>
+    </div>
+    <div class="service-body">
+      <div class="plan">
+        <div class="plan-label"><span>Pagamento Único</span></div>
+        <div class="plan-price">
+          <div class="main">R$197<span></span></div>
+          <div class="sub">Paga uma vez, fica para sempre</div>
+        </div>
+        <ul class="plan-features">
+          <li>Link centralizado com suas redes</li>
+          <li>Botão direto para WhatsApp</li>
+          <li>Design alinhado à sua marca</li>
+          <li class="no">Atualizações após entrega</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20no%20Cart%C3%A3o%20Digital%20%E2%80%94%20Pagamento%20%C3%9Anico%20de%20R%24197." class="btn-escolher btn-unico" target="_blank">Quero este plano →</a>
+      </div>
+      <div class="plan destaque">
+        <div class="plan-label">
+          <span>Recorrente</span>
+          <div class="badge-rec">Recomendado</div>
+        </div>
+        <div class="plan-price">
+          <div class="main">R$129<span> entrada</span></div>
+          <div class="sub">+ R$29/mês · cancele quando quiser</div>
+        </div>
+        <ul class="plan-features">
+          <li>Link centralizado com suas redes</li>
+          <li>Botão direto para WhatsApp</li>
+          <li>Design alinhado à sua marca</li>
+          <li>Atualizações ilimitadas</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20no%20Cart%C3%A3o%20Digital%20%E2%80%94%20Plano%20Recorrente%20R%24129%20%2B%20R%2429%2Fm%C3%AAs." class="btn-escolher btn-recorrente" target="_blank">Quero este plano →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESENÇA LOCAL -->
+  <div class="service-card">
+    <div class="service-header">
+      <div class="service-icon icon-maps">📍</div>
+      <div class="service-header-text">
+        <h2>Presença Local no Google</h2>
+        <p>Apareça na frente da concorrência quando clientes buscarem no Google Maps</p>
+      </div>
+    </div>
+    <div class="service-body">
+      <div class="plan">
+        <div class="plan-label"><span>Pagamento Único</span></div>
+        <div class="plan-price">
+          <div class="main">R$297<span></span></div>
+          <div class="sub">Configuração completa, entrega única</div>
+        </div>
+        <ul class="plan-features">
+          <li>Configuração e correção do perfil</li>
+          <li>Fotos otimizadas com geolocalização</li>
+          <li>Descrição com palavras-chave locais</li>
+          <li>Cadastro de produtos e serviços</li>
+          <li class="no">Atualizações e relatório mensal</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20na%20Presen%C3%A7a%20Local%20%E2%80%94%20Pagamento%20%C3%9Anico%20de%20R%24297." class="btn-escolher btn-unico" target="_blank">Quero este plano →</a>
+      </div>
+      <div class="plan destaque">
+        <div class="plan-label">
+          <span>Recorrente</span>
+          <div class="badge-rec">Recomendado</div>
+        </div>
+        <div class="plan-price">
+          <div class="main">R$229<span> entrada</span></div>
+          <div class="sub">+ R$49/mês · cancele quando quiser</div>
+        </div>
+        <ul class="plan-features">
+          <li>Configuração e correção do perfil</li>
+          <li>Fotos otimizadas com geolocalização</li>
+          <li>Descrição com palavras-chave locais</li>
+          <li>Cadastro de produtos e serviços</li>
+          <li>Relatório mensal de desempenho</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20na%20Presen%C3%A7a%20Local%20%E2%80%94%20Plano%20Recorrente%20R%24229%20%2B%20R%2449%2Fm%C3%AAs." class="btn-escolher btn-recorrente" target="_blank">Quero este plano →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANDING PAGE -->
+  <div class="service-card">
+    <div class="service-header">
+      <div class="service-icon icon-site">🌐</div>
+      <div class="service-header-text">
+        <h2>Landing Page & Site Institucional</h2>
+        <p>Página de alta conversão, blindada, ultraleve e otimizada para dominar o Google</p>
+      </div>
+    </div>
+    <div class="service-body">
+      <div class="plan">
+        <div class="plan-label"><span>Pagamento Único</span></div>
+        <div class="plan-price">
+          <div class="main">R$749<span></span></div>
+          <div class="sub">Entrega completa, sem mensalidade</div>
+        </div>
+        <ul class="plan-features">
+          <li>Design exclusivo para sua marca</li>
+          <li>SEO técnico on-page completo</li>
+          <li>Formulário de captação de leads</li>
+          <li>Hospedagem configurada</li>
+          <li class="no">Atualizações e suporte contínuo</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20na%20Landing%20Page%20%E2%80%94%20Pagamento%20%C3%9Anico%20de%20R%24749." class="btn-escolher btn-unico" target="_blank">Quero este plano →</a>
+      </div>
+      <div class="plan destaque">
+        <div class="plan-label">
+          <span>Recorrente</span>
+          <div class="badge-rec">Recomendado</div>
+        </div>
+        <div class="plan-price">
+          <div class="main">R$379<span> entrada</span></div>
+          <div class="sub">+ R$79/mês · cancele quando quiser</div>
+        </div>
+        <ul class="plan-features">
+          <li>Design exclusivo para sua marca</li>
+          <li>SEO técnico on-page completo</li>
+          <li>Formulário de captação de leads</li>
+          <li>Hospedagem configurada</li>
+          <li>Atualizações e suporte prioritário</li>
+        </ul>
+        <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20tenho%20interesse%20na%20Landing%20Page%20%E2%80%94%20Plano%20Recorrente%20R%24379%20%2B%20R%2479%2Fm%C3%AAs." class="btn-escolher btn-recorrente" target="_blank">Quero este plano →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="domain-note">
+  <p><strong>Domínio para Landing Page:</strong> O registro do domínio (.com.br) é realizado diretamente pelo cliente no registro.br por aproximadamente R$40/ano. O domínio fica no seu nome — você é o dono.</p>
+</div>
+
+<div class="footer-cta">
+  <p>Ainda tem dúvidas? Faça um diagnóstico digital gratuito e descubra o que seu negócio está perdendo hoje.</p>
+  <a href="https://wa.me/SEUNUMERO?text=Ol%C3%A1%20Keriston%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20digital%20gratuito." class="btn-diagnostico" target="_blank">
+    💬 Falar com Keriston agora
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Altus Soluções Digitais · Mogi Guaçu, SP</p>
+</footer>
+
+</body>
+</html>
